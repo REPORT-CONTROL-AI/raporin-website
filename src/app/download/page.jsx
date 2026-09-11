@@ -1,6 +1,6 @@
 "use client";
 
-const VERSION = "1.1.22";
+const VERSION = "1.1.23";
 const DOWNLOAD_URL = `https://downloads.raporin.com/RaporinAI-${VERSION}.msi`;
 
 function handleDownloadClick() {

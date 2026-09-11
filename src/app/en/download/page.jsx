@@ -48,7 +48,7 @@ export default function DownloadPageEN() {
 
         {/* Download Button */}
         <a
-          href="https://downloads.raporin.com/RaporinAI-1.1.22.msi"
+          href="https://downloads.raporin.com/RaporinAI-1.1.23.msi"
           onClick={handleDownloadClick}
           className="inline-flex items-center gap-2 bg-gradient-to-r from-[#17C6A3] to-[#0F918B] text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 transform hover:-translate-y-1"
         >
