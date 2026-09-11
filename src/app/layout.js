@@ -18,11 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL('https://raporin.com'),
   title: {
-    default: "RaporinAI — ÜCRETSİZ Eczane Reçete ve Rapor Kontrol Programı | Yapay Zeka Destekli SGK Analizi",
+    default: "RaporinAI | Yapay Zeka Destekli Eczane Reçete ve Rapor Kontrolü",
     template: "%s | RaporinAI"
   },
   description:
-    "RaporinAI, yapay zeka destekli bir Eczane Reçete ve Rapor Kontrol Programıdır. Dönemin tüm reçetelerini tek tıkla analiz edin, SUT uyumsuzluklarını ve SGK kesintilerini fatura teslim etmeden önce önleyin.",
+    "RaporinAI: yapay zeka destekli eczane reçete ve rapor kontrol programı. Medula aktarımı, toplu analiz ve SUT kriterlerine göre kontrol. Beta süresince ücretsiz.",
   // Google keywords meta etiketini yok sayar; kısa ve odaklı tutuyoruz.
   keywords: [
     "Eczane Reçete ve Rapor Kontrol Programı",
@@ -46,9 +46,9 @@ export const metadata = {
     type: "website",
     locale: "tr_TR",
     url: "https://raporin.com",
-    title: "RaporinAI — ÜCRETSİZ Eczane Reçete ve Rapor Kontrol Programı",
+    title: "RaporinAI — Yapay Zeka Destekli Eczane Reçete ve Rapor Kontrolü",
     description:
-      "Dönemin tüm reçetelerini tek tıkla analiz edin. Reçete ve rapor hatalarını saniyeler içinde bulun, SGK kesintilerini önleyin.",
+      "Medula aktarımı, PDF ile rapor kontrolü ve toplu reçete analizi. SUT kriterlerine göre açıklamalı sonuçlar; beta süresince ücretsiz.",
     siteName: "RaporinAI",
     images: [
       {
@@ -61,9 +61,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "RaporinAI — ÜCRETSİZ Eczane Reçete ve Rapor Kontrol Programı",
+    title: "RaporinAI — Yapay Zeka Destekli Eczane Reçete ve Rapor Kontrolü",
     description:
-      "Dönemin tüm reçetelerini tek tıkla analiz edin, SGK kesintilerini fatura teslim etmeden önce önleyin.",
+      "Medula’dan reçete aktarın, raporlu ilaçları toplu analiz edin ve SUT kriterlerine göre sonuçları inceleyin. Beta süresince ücretsiz.",
     images: ["/og-image.png"],
     creator: "@raporinai",
   },

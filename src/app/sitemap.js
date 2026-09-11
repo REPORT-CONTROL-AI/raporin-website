@@ -1,5 +1,5 @@
 import { blogPosts } from "../lib/blogPosts";
-import { solutionSlugs } from "../lib/solutionPages";
+import { solutionSlugs, solutionPages } from "../lib/solutionPages";
 
 const baseUrl = "https://raporin.com";
 
@@ -22,25 +22,22 @@ const staticRoutes = [
 ];
 
 export default function sitemap() {
-  const now = new Date();
-
   const pages = staticRoutes.map(({ path, changeFrequency, priority }) => ({
     url: `${baseUrl}${path}`,
-    lastModified: now,
     changeFrequency,
     priority,
   }));
 
   const solutions = solutionSlugs.map((slug) => ({
     url: `${baseUrl}/${slug}`,
-    lastModified: now,
+    ...(solutionPages[slug].updatedAt ? { lastModified: new Date(solutionPages[slug].updatedAt) } : {}),
     changeFrequency: "monthly",
     priority: 0.9,
   }));
 
   const posts = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.publishedAt ? new Date(post.publishedAt) : now,
+    ...(post.updatedAt || post.publishedAt ? { lastModified: new Date(post.updatedAt || post.publishedAt) } : {}),
     changeFrequency: "monthly",
     priority: 0.7,
   }));

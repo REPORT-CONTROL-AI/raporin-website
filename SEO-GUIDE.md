@@ -1,5 +1,7 @@
 # RaporinAI - SEO Optimizasyon Rehberi
 
+> Güncel GEO uygulaması, canlı Cloudflare bulgusu ve yayın sonrası ölçüm planı için [GEO-GUIDE.md](./GEO-GUIDE.md) dosyasına bakın. Aşağıdaki eski kontrol listesi tarihsel nottur; mevcut kodun veya arama sonuçlarının garantisi değildir.
+
 ## ✅ Tamamlanan SEO İyileştirmeleri
 
 ### 1. Meta Tags ve Metadata

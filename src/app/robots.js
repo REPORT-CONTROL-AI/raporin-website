@@ -1,8 +1,6 @@
-// Not: Cloudflare'in "Managed robots.txt" özelliği bu çıktının ÜSTÜNE kendi bloğunu
-// ekleyerek GPTBot, ClaudeBot, Google-Extended gibi botları engelliyor. Aşağıdaki
-// açık Allow kuralları aynı bot için daha az kısıtlayıcı olduğundan Google'ın
-// robots.txt kuralları gereği öncelik kazanır; yine de kalıcı çözüm için
-// Cloudflare panelinden AI Crawl Control / Managed robots.txt kapatılmalıdır.
+// CDN tarafından eklenen kurallar uygulamanın robots çıktısıyla çelişebilir.
+// Gerçek tarama erişimi için canlı yanıt ve CDN bot olayları birlikte kontrol edilir.
+// Arama erişimi, model eğitimi izninden ayrı değerlendirilir (bkz. GEO-GUIDE.md).
 const AI_CRAWLERS = [
   'GPTBot',
   'OAI-SearchBot',
@@ -16,16 +14,18 @@ const AI_CRAWLERS = [
   'Applebot-Extended',
 ];
 
+const PRIVATE_PATHS = ["/api/", "/private/", "/reset-password", "/verify-email"];
+
 export default function robots() {
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/private/', '/reset-password', '/verify-email'],
+        disallow: PRIVATE_PATHS,
       },
       // Yapay zeka arama motorlarının siteyi kaynak gösterebilmesi için açık izin.
-      ...AI_CRAWLERS.map((userAgent) => ({ userAgent, allow: '/' })),
+      ...AI_CRAWLERS.map((userAgent) => ({ userAgent, allow: '/', disallow: PRIVATE_PATHS })),
     ],
     sitemap: 'https://raporin.com/sitemap.xml',
     host: 'https://raporin.com',
