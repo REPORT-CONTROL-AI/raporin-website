@@ -18,7 +18,7 @@ class Page(HTMLParser):
         self.schemas = []
         self.links = []
         self.metas = []
-        self.details = 0
+        self.faq_controls = []
         self.h1s = 0
         self.script = None
         self.script_text = []
@@ -33,7 +33,8 @@ class Page(HTMLParser):
             self.links.append(attrs)
         if tag == "meta":
             self.metas.append(attrs)
-        self.details += tag == "details"
+        if tag == "button" and attrs.get("aria-controls", "").startswith("faq-answer-"):
+            self.faq_controls.append(attrs)
         self.h1s += tag == "h1"
 
     def handle_data(self, data):
@@ -79,11 +80,13 @@ for path in paths:
     assert normalize(software[0]["description"]) in text, (path, "invisible product description")
     assert software[0]["publisher"]["@id"] in [schema.get("@id") for schema in page.schemas], path
     assert "aggregateRating" not in software[0], (path, "unverified rating")
+    assert 'id="raporinai-nedir"' not in html, (path, "removed product overview must not return")
     if path == "/":
-        assert page.details == len(faqs[0]["mainEntity"]), "native FAQ answers must exist without JS"
+        assert len(page.faq_controls) == len(faqs[0]["mainEntity"]), "each FAQ answer must have a toggle"
+        assert all(button.get("aria-expanded") == "false" for button in page.faq_controls), "FAQ answers start collapsed"
     else:
         assert not any(link.get("hreflang") for link in page.links), (path, "unrelated homepage translations")
-        assert "Yapay Zeka Destekli Eczane" in text, path
+
     print("PASS rendered HTML, metadata and JSON-LD:", path)
 
 for path in ["/kvkk", "/en"]:

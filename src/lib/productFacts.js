@@ -1,6 +1,6 @@
 export const SITE_URL = "https://raporin.com";
 
-// Ürün özeti, SoftwareApplication ve llms.txt için ortak, kamuya açık bilgiler.
+// SoftwareApplication ve llms.txt için kamuya açık ürün bilgileri.
 export const product = {
   name: "RaporinAI",
   description: "RaporinAI, Türkiye’deki eczaneler için yapay zeka destekli bir reçete ve rapor kontrol programıdır. Medula’dan reçete aktarımı, PDF ile tekil rapor kontrolü, toplu analiz ve reçete–rapor doz karşılaştırması sunar; SUT kriterlerine göre değerlendirme sonuçlarını gösterir.",

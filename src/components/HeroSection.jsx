@@ -87,7 +87,7 @@ export default function HeroSection() {
             raporları güncel{" "}
             <strong>SUT</strong> kurallarına göre saniyeler içinde değerlendirir; uygunsuzlukları
              tespit ederek{" "}
-            kesinti riskini azaltmanıza yardımcı olur. Beta sürecinde tamamen{" "}
+            kesintilerin önüne geçer. Beta sürecinde tamamen{" "}
             <strong>ÜCRETSİZ</strong>.
           </p>
 

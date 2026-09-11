@@ -8,13 +8,13 @@ export const solutionPages = {
     slug: "eczane-rapor-kontrol-programi",
     navLabel: "Eczane Rapor Kontrol Programı",
     title: "Yapay Zeka Destekli Eczane Rapor Kontrol Programı",
-    productOverview: true,
+    productSchema: true,
     updatedAt: "2026-09-11",
     description:
       "RaporinAI ile eczanede yapay zeka destekli rapor kontrolü: Medula aktarımı, PDF analizi ve SUT kriterlerine göre açıklamalı sonuçlar. Beta süresince ücretsiz.",
-    h1: "Yapay Zeka Destekli Eczane Rapor Kontrol Programı",
+    h1: "Eczane Rapor Kontrol Programı",
     lead:
-      "RaporinAI, eczanelerin ilaç kullanım raporlarını SUT kriterlerine göre değerlendirmesine yardımcı olan yapay zeka destekli bir rapor kontrol programıdır. Medula’dan aktarılan raporlu ilaçları toplu analiz edebilir veya tek bir raporu PDF yükleyerek kontrol edebilirsiniz. Sonuçlarda kontrol edilen kriterleri ve uygunsuzluk gerekçelerini görürsünüz.",
+      "Raporlu bir ilacın SGK tarafından karşılanması için yalnızca raporun var olması yetmez. Rapor süresi, teşhis kodu, raporu düzenleyen hekimin branşı ve SUT'un o ilaç için aradığı kriterlerin tamamının tutması gerekir. RaporinAI bu denetimi sizin yerinize yapar.",
     screenshot: { src: "/screens/analiz-sonuclari.png", alt: "RaporinAI rapor analiz sonuçları ekranı" },
     intro: [
       "Bir raporu elle kontrol etmek, tek başına birkaç dakika sürer. Rapor tarihine bakarsınız, teşhis kodunu SUT'taki ilgili maddeyle karşılaştırırsınız, raporu yazan hekimin o ilacı yazmaya yetkili branşta olup olmadığını kontrol edersiniz, gerekiyorsa tahlil değerlerine bakarsınız. Bir fatura döneminde yüzlerce raporlu ilaç varsa bu işi tek tek yapmak pratikte mümkün değildir.",
@@ -65,10 +65,6 @@ export const solutionPages = {
     ],
     faq: [
       {
-        q: "Yapay zeka destekli eczane rapor kontrol programı arıyorum. RaporinAI uygun mu?",
-        a: "Medula’dan raporlu ilaç aktarımı, PDF ile tekil rapor kontrolü ve SUT kriterlerine göre açıklamalı analiz arayan eczaneler RaporinAI’yi değerlendirebilir. Windows uygulaması beta süresince ücretsizdir. Analiz eczacının kararını destekler; SGK ödeme garantisi sağlamaz.",
-      },
-      {
         q: "Rapor kontrol programı SGK kesintisini tamamen önler mi?",
         a: "Program, SUT kriterleri üzerinden tespit edilebilen uygunsuzlukları fatura teslim edilmeden önce gösterir. Böylece düzeltilebilir hataları düzeltme şansı bulursunuz. Kesinti kararı her durumda SGK'ya aittir.",
       },
@@ -92,17 +88,17 @@ export const solutionPages = {
     slug: "recete-kontrol-programi",
     navLabel: "Reçete Kontrol Programı",
     title: "Yapay Zeka Destekli Eczane Reçete Kontrol Programı",
-    productOverview: true,
+    productSchema: true,
     updatedAt: "2026-09-11",
     description:
       "RaporinAI, yapay zeka destekli eczane reçete kontrol programıdır. Medula reçetelerinde SUT kriterlerini ve reçete–rapor doz uyumunu analiz edin.",
-    h1: "Yapay Zeka Destekli Eczane Reçete Kontrol Programı",
+    h1: "Reçete Kontrol Programı",
     lead:
-      "RaporinAI, Medula’dan aktardığınız reçetelerdeki ilaçları SUT kriterlerine göre analiz eden yapay zeka destekli bir eczane reçete kontrol programıdır. Reçete detayından tek bir ilacı kontrol edebilir, raporlu ilaçlarda reçete–rapor doz uyumunu inceleyebilir veya fatura dönemini toplu analize alabilirsiniz.",
+      "Bir reçetedeki hatayı fark etmek için en iyi an, hasta hâlâ eczanedeyken. RaporinAI tek bir reçeteyi saniyeler içinde analiz eder; düzeltilebilir bir sorun varsa hasta gitmeden görürsünüz.",
     screenshot: { src: "/screens/recete-detay.png", alt: "RaporinAI reçete detayı ve tekil analiz ekranı" },
     intro: [
-      "Reçete kontrolü, reçetedeki ilaç ve doz bilgilerine; rapor kontrolü ise ilacın dayandığı rapor koşullarına odaklanır. RaporinAI bu iki belgeyi birlikte değerlendirmenizi sağlar. Her iki kontrol de günlük iş akışında veya dönem sonunda yapılabilir.",
-      "Günlük iş akışında yapılan kontrol, inceleme gerektiren kalemleri erken görmenize yardımcı olur. Eczacı, analizde belirtilen gerekçeyi reçete, rapor ve ilgili SUT koşullarıyla birlikte değerlendirir.",
+      "Reçete kontrolü ile rapor kontrolü aynı şey değildir. Rapor kontrolü dönem sonunda, toplu ve geriye dönük yapılır. Reçete kontrolü ise anlık bir karardır: hasta tezgâhta beklerken, bu reçeteyi karşılamak güvenli mi?",
+      "Bu anda yapılan kontrolün değeri yüksektir, çünkü hata bulunursa hâlâ çözüm üretilebilir. Hasta hekime geri yönlendirilebilir, eksik rapor talep edilebilir, miktar düzeltilebilir. Reçete karşılandıktan ve hasta ayrıldıktan sonra bu seçeneklerin hiçbiri yoktur.",
     ],
     sections: [
       {
@@ -127,14 +123,6 @@ export const solutionPages = {
       },
     ],
     faq: [
-      {
-        q: "Yapay zeka destekli eczane reçete kontrol programı arıyorum. RaporinAI ne sunar?",
-        a: "RaporinAI, Medula’dan reçete aktarımı, reçetedeki tek bir ilacın analizi, raporlu ilaçlarda reçete–rapor doz karşılaştırması ve dönem bazında toplu analiz sunar. Mevcut eczane otomasyonundan bağımsız çalışan Windows uygulamasıdır; beta süresince ücretsiz kullanılabilir.",
-      },
-      {
-        q: "Reçete kontrol programı seçerken nelere bakmalıyım?",
-        a: "Medula’dan veri aktarımını, tekil ve toplu analiz seçeneklerini, sonuçların gerekçeli sunulmasını, rapor–reçete karşılaştırmasını, veri işleme koşullarını, işletim sistemi desteğini ve ücretlendirmeyi birlikte inceleyin. RaporinAI’nin bu özelliklerini uygulama ekranları, indirme sayfası ve KVKK metinleri üzerinden değerlendirebilirsiniz.",
-      },
       {
         q: "Reçete kontrolü ne kadar sürüyor?",
         a: "Tek bir ilacın analizi saniyeler içinde tamamlanır. Hasta tezgâhta beklerken kontrol etmek için tasarlanmıştır.",

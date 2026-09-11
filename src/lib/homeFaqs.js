@@ -25,7 +25,7 @@ export const homeFaqs = [
         },
         {
           q: "Hangi rapor türlerini kontrol edebilirim?",
-          a: "RaporinAI, Medula’dan aktarılan reçetelerdeki raporlu ilaçların ve PDF olarak yüklenen ilaç kullanım raporlarının kontrolüne odaklanır. Kullanacağınız ilaç ve raporun analiz kapsamını uygulama üzerinden değerlendirebilirsiniz."
+          a: "RaporinAI, tüm SGK Medula raporlarını kontrol edebilir. Bunlar arasında reçete raporları, kronik hastalık raporları, özel rapor gerektiren ilaç raporları ve diğer tüm SGK rapor türleri bulunmaktadır. Sistem, sürekli güncellenen SUT veritabanı ile tüm rapor türlerini destekler."
         },
         {
           q: "Sistemi kullanmak için teknik bilgiye ihtiyacım var mı?",
@@ -38,15 +38,15 @@ export const homeFaqs = [
       questions: [
         {
           q: "SUT uyumsuzlukları nasıl tespit edilir?",
-          a: "Sistemimiz, güncel SUT (Sağlık Uygulama Tebliği) veritabanını sürekli takip eder. Rapordaki tanı kodları, rapor koşulları ve reçete–rapor doz uyumu SUT kriterleri üzerinden değerlendirilir. Uyumsuzluk tespit edildiğinde, detaylı açıklama ve düzeltme önerileri sunulur."
+          a: "Sistemimiz, güncel SUT (Sağlık Uygulama Tebliği) veritabanını sürekli takip eder. Rapordaki ICD-10 tanı kodları, ilaç etkileşimleri, doz uygunluğu ve SUT'ta belirtilen kısıtlamalar otomatik olarak kontrol edilir. Uyumsuzluk tespit edildiğinde, detaylı açıklama ve düzeltme önerileri sunulur."
         },
         {
           q: "Reçete–rapor doz kontrolü nedir?",
-          a: "Reçetede yazılan dozun rapordaki tedavi şemasıyla uyuşmaması, geri ödeme değerlendirmesinde sorun oluşturabilir. RaporinAI, reçetedeki doz ile rapordaki dozu otomatik karşılaştırır ve aşım olduğunda ilacı uygun saymayarak sizi uyarır."
+          a: "SUT kriterlerinin tamamı karşılansa bile, reçetede yazılan doz rapordaki tedavi şemasının izin verdiği dozu aşıyorsa ilacın bedeli ödenmez. RaporinAI, reçetedeki doz ile rapordaki dozu otomatik karşılaştırır ve aşım olduğunda ilacı uygun saymayarak sizi uyarır."
         },
         {
           q: "SUT güncellemeleri nasıl takip edilir?",
-          a: "RaporinAI ekibi, SGK tarafından yapılan tüm SUT güncellemelerini takip eder ve sistemimizi otomatik olarak günceller. Kullanıcıların herhangi bir işlem yapmasına gerek yoktur. Analiz sonuçlarını değerlendirirken ilgili güncel resmi metinler ve eczacının mesleki kontrolü esas alınmalıdır."
+          a: "RaporinAI ekibi, SGK tarafından yapılan tüm SUT güncellemelerini takip eder ve sistemimizi otomatik olarak günceller. Kullanıcıların herhangi bir işlem yapmasına gerek yoktur. Sistem her zaman en güncel SUT kurallarına göre analiz yapar."
         }
       ]
     },
@@ -55,7 +55,7 @@ export const homeFaqs = [
       questions: [
         {
           q: "Kişisel veriler nasıl korunur?",
-          a: "PDF rapor akışında hasta ve hekim bilgileri analiz öncesinde maskelenir. Medula giriş bilgileri sunucularımızda saklanmaz; isteğe bağlı otomatik giriş bilgileri kendi bilgisayarınızda şifreli tutulur. İşlenen veri kategorileri ve hizmet sağlayıcılar hakkında ayrıntılar KVKK ve hukuki metinler sayfasında açıklanır."
+          a: "RaporinAI, KVKK (Kişisel Verilerin Korunması Kanunu) standartlarına uygun şekilde çalışır. Hasta ve Doktora ait kişisel bilgiler (TC kimlik numarası, ad ve soyad, rapor numarası vb.)  hiçbir zaman sunucularımıza gönderilmez; Analiz yalnızca tanı kodları, etkin madde ve doz gibi klinik alanlarla tamamen anonim olarak yapılır."
         }
       ]
     },
@@ -64,7 +64,7 @@ export const homeFaqs = [
       questions: [
         {
           q: "Ücretsiz deneme süresi var mı?",
-          a: "RaporinAI beta sürecinde tüm özellikleriyle ücretsizdir ve kredi kartı bilgisi gerektirmez. Beta sonrası koşullar ayrıca duyurulur."
+          a: "Evet! RaporinAI şuan Beta sürecinde ve tüm özellikler tamamen ücretsizdir ve kredi kartı bilgisi gerektirmez."
         }
       ]
     }

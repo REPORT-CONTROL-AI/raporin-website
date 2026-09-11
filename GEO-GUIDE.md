@@ -17,14 +17,14 @@ Mevcut adresler güçlendirildi; aynı ihtiyaca yönelik kopya sayfalar açılma
 
 ## Uygulanan değişiklikler
 
-- İki hedef sayfanın başlığı, açıklaması ve giriş metni ürünün yapay zeka destekli kullanımını doğrudan açıklıyor. Program seçimi ve uygunluk sorularına cevaplar eklendi.
-- Ana sayfa ve iki hedef sayfaya görünür ürün özeti eklendi: hedef kitle, Windows, Medula/PDF aktarımı, analiz kapsamı, beta ücreti ve değerlendirme sınırı.
-- Ana sayfa SSS bölümü sunucuda üretilen `details/summary` kullanıyor. Cevaplar ilk HTML içinde mevcut; JavaScript gerekmiyor. Görünür SSS ve FAQPage aynı `src/lib/homeFaqs.js` verisini kullanıyor.
-- Organization, WebSite ve SoftwareApplication kalıcı `@id` bağlantıları kullanıyor. Ürün şeması yalnızca Türkçe ürün özetinin bulunduğu sayfalarda basılıyor. Görünür içerikle desteklenmeyen sürüm numarası ve Twitter kimliği kaldırıldı. Sahte puan eklenmedi.
+- İki hedef sayfanın SEO başlıkları ve meta açıklamaları yapay zeka destekli kullanımı açıklıyor. Kullanıcının talebiyle görünür başlıklar, giriş metinleri ve SSS içerikleri GEO öncesi haline döndürüldü.
+- Kullanıcının talebiyle ana sayfa ve iki hedef sayfadaki yeni ürün özeti bölümleri kaldırıldı. Yeni bir görsel bölüm eklenmiyor.
+- Ana sayfa SSS bölümünün önceki tasarımı, animasyonları ve düğmeleri geri getirildi. Cevaplar kapalıyken de ilk HTML içinde bulunuyor; açma/kapatma etkileşimi önceki arayüzdeki gibi JavaScript kullanıyor. SSS ve FAQPage aynı `src/lib/homeFaqs.js` verisini kullanıyor.
+- Organization, WebSite ve SoftwareApplication kalıcı `@id` bağlantıları kullanıyor. Ürün şeması ana sayfa ve iki hedef çözüm sayfasında basılıyor; açıklaması ilgili sayfanın mevcut metninden alınıyor. Görünür içerikle desteklenmeyen sürüm numarası ve Twitter kimliği kaldırıldı. Sahte puan eklenmedi.
 - Çözüm sayfaları kendi canonical ve sosyal paylaşım açıklamalarını kullanıyor; ana sayfanın dil alternatifleri bu sayfalara taşınmıyor.
 - Sitemap artık her derlemede bütün sayfaları yeni güncellenmiş gibi göstermiyor. Bilinen içerik tarihleri kullanılıyor; bilinmeyenler yazılmıyor.
 - Botlara özel gruplar da API, özel alan ve hesap doğrulama/sıfırlama yollarını dışlıyor. Mevcut bot listesi korundu.
-- `/llms.txt`, görünür ürün özetiyle aynı veriden üretilen isteğe bağlı bir keşif dosyası. Sıralama faktörü veya AI platformlarının okuyacağına dair garanti olarak değerlendirilmemeli. Google böyle özel dosyaları zorunlu tutmuyor. [Google açıklaması](https://developers.google.com/search/docs/appearance/ai-features).
+- `/llms.txt`, kamuya açık ürün bilgilerinden üretilen isteğe bağlı bir keşif dosyası. Sıralama faktörü veya AI platformlarının okuyacağına dair garanti olarak değerlendirilmemeli. Google böyle özel dosyaları zorunlu tutmuyor. [Google açıklaması](https://developers.google.com/search/docs/appearance/ai-features).
 - Mevcut ESLint ayarı Next.js 16’nın flat config biçimine geçirildi; önceki FlatCompat yapılandırması kontrol başlamadan hata veriyordu.
 
 Yapılandırılmış verinin sayfadaki içerikle uyuşması gerekir; işaretleme tek başına özel arama görünümü sağlamaz. [Google yapılandırılmış veri ilkeleri](https://developers.google.com/search/docs/appearance/structured-data/sd-policies).
@@ -57,7 +57,7 @@ Cloudflare, mevcut robots.txt önüne yönetilen bloğu eklediğini ve robots te
 
 ## Ölçüm: ilk 4 hafta
 
-Yayın günü bir başlangıç ölçümü alın; henüz sıralama veya önerilme oranı ölçülmedi. Haftada bir aynı soruları ChatGPT, Gemini, Claude ve Perplexity’de yeni sohbetlerde sorun. Markayı soruya eklemeyin; önceki sohbetin sonucu yönlendirmesini önleyin. Web aramasının açık/kapalı olduğunu ve platformun bunu destekleyip desteklemediğini kaydedin. Her soruyu üç bağımsız sohbette deneyin; bu küçük örneklemi kesin pazar payı olarak yorumlamayın.
+Yayın günü bir başlangıç ölçümü alın; henüz sıralama veya önerilme oranı ölçülmedi. Kullanıcının önceliği ChatGPT ve Gemini. Haftada bir aynı soruları bu iki platformda yeni sohbetlerde sorun. Markayı soruya eklemeyin; önceki sohbetin sonucu yönlendirmesini önleyin. Web aramasının açık/kapalı olduğunu ve platformun bunu destekleyip desteklemediğini kaydedin. Her soruyu üç bağımsız sohbette deneyin; bu küçük örneklemi kesin pazar payı olarak yorumlamayın.
 
 Örnek soru seti:
 

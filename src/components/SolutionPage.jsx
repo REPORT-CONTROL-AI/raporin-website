@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { solutionPages } from "../lib/solutionPages";
 import Footer from "./Footer";
-import ProductOverview from "./ProductOverview";
 import ProductSchema from "./ProductSchema";
 
 const BASE_URL = "https://raporin.com";
@@ -67,7 +66,7 @@ export default function SolutionPage({ page }) {
   return (
     <>
       <StructuredData page={page} />
-      {page.productOverview && <ProductSchema />}
+      {page.productSchema && <ProductSchema description={page.lead} />}
 
       <main className="bg-white pt-28 pb-20">
         <article className="mx-auto max-w-3xl px-6">
@@ -84,7 +83,6 @@ export default function SolutionPage({ page }) {
           </h1>
 
           <p className="mt-5 text-lg leading-relaxed text-gray-600">{page.lead}</p>
-          {page.productOverview && <div className="mt-8"><ProductOverview /></div>}
 
           <div className="mt-8 overflow-hidden rounded-2xl border border-teal-100 bg-white shadow-lg shadow-teal-900/5">
             <Image
