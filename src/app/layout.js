@@ -3,6 +3,8 @@ import "./globals.css";
 import StructuredData from "../components/StructuredData";
 import LayoutWrapper from "../components/LayoutWrapper";
 import CookieConsent from "../components/CookieConsent";
+import { GTM_ID } from "../lib/analytics";
+import { CONSENT_STORAGE_KEY, CONSENT_VERSION } from "../lib/cookieConsent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -107,9 +109,10 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {/*
-          Google Consent Mode v2 — varsayılan olarak tüm rıza sinyalleri "denied".
-          Bu script her şeyden önce çalışmalı; kullanıcı rıza verdiğinde
-          CookieConsent bileşeni "consent update" gönderir ve Google Ads etiketini yükler.
+          Google Consent Mode v2 (advanced) — varsayılan olarak tüm rıza sinyalleri "denied".
+          Bu script GTM'den önce çalışmalı. Daha önce kaydedilmiş rıza varsa GTM yüklenmeden
+          uygulanır; yeni seçimleri CookieConsent bileşeni "consent update" ile iletir.
+          Rıza yokken Google etiketleri çerez yazmaz, yalnızca çerezsiz sinyal gönderir.
         */}
         <script
           id="google-consent-default"
@@ -129,7 +132,35 @@ export default function RootLayout({ children }) {
               });
               gtag('set', 'ads_data_redaction', true);
               gtag('set', 'url_passthrough', true);
+
+              // Kategori eşlemesi src/lib/cookieConsent.js > applyConsentToGtag ile aynı olmalı.
+              try {
+                var saved = JSON.parse(localStorage.getItem('${CONSENT_STORAGE_KEY}'));
+                if (saved && saved.version === ${CONSENT_VERSION} && saved.categories) {
+                  var c = saved.categories;
+                  gtag('consent', 'update', {
+                    ad_storage: c.marketing ? 'granted' : 'denied',
+                    ad_user_data: c.marketing ? 'granted' : 'denied',
+                    ad_personalization: c.marketing ? 'granted' : 'denied',
+                    analytics_storage: c.performance ? 'granted' : 'denied',
+                    functionality_storage: c.functional ? 'granted' : 'denied',
+                    personalization_storage: c.functional ? 'granted' : 'denied',
+                    security_storage: 'granted'
+                  });
+                }
+              } catch (e) {}
             `,
+          }}
+        />
+        {/* Google Tag Manager — GA4, Google Ads ve Meta etiketleri GTM panelinden yönetilir */}
+        <script
+          id="google-tag-manager"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`,
           }}
         />
         <StructuredData />

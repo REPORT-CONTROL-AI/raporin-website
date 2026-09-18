@@ -4,17 +4,13 @@ import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Script from "next/script";
 import {
   ALL_GRANTED,
   DEFAULT_CONSENT,
   OPEN_SETTINGS_EVENT,
-  applyConsentToGtag,
   readConsent,
   writeConsent,
 } from "../lib/cookieConsent";
-
-const GOOGLE_ADS_ID = "AW-18025898979";
 
 const TR = {
   policyHref: "/kvkk/cerez-politikasi",
@@ -48,7 +44,7 @@ const TR = {
       description:
         "İnternet sitelerinde kullanıcıların davranışlarını analiz etmek amacıyla istatistiki ölçümüne imkân veren çerezlerdir. Bu çerezler, sitenin iyileştirilmesi için sıklıkla kullanılmakta olup bu duruma reklamların ilgili kişiler üzerindeki etkisinin ölçümü de dâhildir. Tekil ziyaretçilerin sayısını tahmin etmek, bir internet sayfasına götüren en önemli arama motoru anahtar kelimelerini tespit etmek veya internet sitesinde gezinme durumunu izlemek için kullanılmaktadır.",
       cookies:
-        "Şu an internet sitemizde bu kategoride aktif bir çerez bulunmamaktadır. Tercihiniz, ileride eklenecek analitik araçlar için uygulanır.",
+        "Google Analytics 4 (Google): _ga, _ga_* (ziyaretçileri ayırt etmek ve oturumları ölçmek, 2 yıla kadar). Bu kategoriyi kapalı tuttuğunuzda bu çerezler yerleştirilmez; Google'a yalnızca çerez içermeyen ve sizi tanımlamayan toplu ölçüm sinyalleri iletilir.",
     },
     {
       key: "functional",
@@ -62,9 +58,9 @@ const TR = {
       key: "marketing",
       title: "Pazarlama Çerezleri",
       description:
-        "Bu çerezler internet sitemiz aracılığıyla reklam ortaklarımızın yerleştirdikleri çerezler olup üçüncü taraf çerezlerdir. Bu çerezler iş ortaklarımız tarafından ilgi alanlarınıza göre profilinizin çıkarılması ve size ilgili reklamlar göstermek üzere kullanılmaktadır. Bu kategoriyi kapalı tuttuğunuzda Google Ads etiketi hiç yüklenmez.",
+        "Bu çerezler internet sitemiz aracılığıyla reklam ortaklarımızın yerleştirdikleri çerezler olup üçüncü taraf çerezlerdir. Bu çerezler iş ortaklarımız tarafından ilgi alanlarınıza göre profilinizin çıkarılması ve size ilgili reklamlar göstermek üzere kullanılmaktadır. Bu kategoriyi kapalı tuttuğunuzda reklam çerezleri yerleştirilmez ve Meta etiketleri hiç çalıştırılmaz; Google'a yalnızca çerez içermeyen ve sizi tanımlamayan toplu ölçüm sinyalleri iletilir.",
       cookies:
-        "Google Ads: _gcl_au, _gcl_aw, _gcl_dc, _gcl_gs, _gcl_ls (yerel depolama); IDE ve test_cookie (doubleclick.net); NID (google.com).",
+        "Google Ads: _gcl_au, _gcl_aw, _gcl_dc, _gcl_gs, _gcl_ls (yerel depolama); IDE ve test_cookie (doubleclick.net); NID (google.com). Meta Pixel (Facebook / Instagram): _fbp, _fbc; fr (facebook.com).",
     },
   ],
 };
@@ -101,7 +97,7 @@ const EN = {
       description:
         "These cookies allow statistical measurement of how visitors use our website. They help us estimate the number of unique visitors, identify the search terms that lead to our pages and understand how visitors navigate the site, so that we can improve it.",
       cookies:
-        "No cookie in this category is currently active on our website. Your preference will apply to any analytics tool added in the future.",
+        "Google Analytics 4 (Google): _ga, _ga_* (distinguish visitors and measure sessions, up to 2 years). If you keep this category off, these cookies are not set; only cookieless, aggregate measurement signals that do not identify you are sent to Google.",
     },
     {
       key: "functional",
@@ -115,9 +111,9 @@ const EN = {
       key: "marketing",
       title: "Marketing Cookies",
       description:
-        "These are third-party cookies placed by our advertising partners through our website. They are used by our partners to build a profile of your interests and to show you relevant advertising. If you keep this category off, the Google Ads tag is never loaded.",
+        "These are third-party cookies placed by our advertising partners through our website. They are used by our partners to build a profile of your interests and to show you relevant advertising. If you keep this category off, advertising cookies are not set and Meta tags are never run; only cookieless, aggregate measurement signals that do not identify you are sent to Google.",
       cookies:
-        "Google Ads: _gcl_au, _gcl_aw, _gcl_dc, _gcl_gs, _gcl_ls (local storage); IDE and test_cookie (doubleclick.net); NID (google.com).",
+        "Google Ads: _gcl_au, _gcl_aw, _gcl_dc, _gcl_gs, _gcl_ls (local storage); IDE and test_cookie (doubleclick.net); NID (google.com). Meta Pixel (Facebook / Instagram): _fbp, _fbc; fr (facebook.com).",
     },
   ],
 };
@@ -148,21 +144,19 @@ export default function CookieConsent() {
   const pathname = usePathname();
   const t = pathname?.startsWith("/en") ? EN : TR;
 
-  const [consent, setConsent] = useState(null);
   const [ready, setReady] = useState(false);
   const [showBanner, setShowBanner] = useState(false);
   const [showPanel, setShowPanel] = useState(false);
   const [draft, setDraft] = useState(DEFAULT_CONSENT);
   const [expanded, setExpanded] = useState(null);
 
-  // İlk yüklemede kayıtlı rızayı oku ve Consent Mode'a uygula
+  // İlk yüklemede kayıtlı rızayı oku. Consent Mode'a uygulanması layout.js'teki
+  // head script'inde, GTM yüklenmeden önce yapılır.
   useEffect(() => {
     const stored = readConsent();
 
     if (stored) {
-      setConsent(stored);
       setDraft(stored);
-      applyConsentToGtag(stored);
     } else {
       setShowBanner(true);
     }
@@ -201,35 +195,13 @@ export default function CookieConsent() {
 
   const commit = useCallback((categories) => {
     const saved = writeConsent(categories);
-    setConsent(saved);
     setDraft(saved);
     setShowBanner(false);
     setShowPanel(false);
   }, []);
 
-  const marketingGranted = Boolean(consent?.marketing);
-
   return (
     <>
-      {/* Google Ads etiketi yalnızca pazarlama çerezlerine açık rıza verildiyse yüklenir */}
-      {marketingGranted && (
-        <>
-          <Script
-            id="google-ads-src"
-            src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script id="google-ads" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GOOGLE_ADS_ID}');
-            `}
-          </Script>
-        </>
-      )}
-
       {/* Sabit çerez ayarları ikonu — rıza verildikten sonra görünür */}
       {ready && !showBanner && (
         <button

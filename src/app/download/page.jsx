@@ -1,17 +1,9 @@
 "use client";
 
+import { trackDownload } from "../../lib/analytics";
+
 const VERSION = "1.1.23";
 const DOWNLOAD_URL = `https://downloads.raporin.com/RaporinAI-${VERSION}.msi`;
-
-function handleDownloadClick() {
-  if (typeof window !== "undefined" && typeof window.gtag === "function") {
-    window.gtag("event", "conversion", {
-      send_to: "AW-18025898979/GwJKCPTBh44cEOPHtZND",
-      event_category: "download",
-      event_label: "windows_msi",
-    });
-  }
-}
 
 export default function DownloadPage() {
   return (
@@ -37,7 +29,7 @@ export default function DownloadPage() {
 
         <a
           href={DOWNLOAD_URL}
-          onClick={handleDownloadClick}
+          onClick={() => trackDownload(DOWNLOAD_URL)}
           className="mt-9 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#17C6A3] to-[#0F918B] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
         >
           <span className="text-xl">💻</span>

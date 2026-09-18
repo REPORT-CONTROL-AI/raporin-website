@@ -12,6 +12,23 @@ export const metadata = {
 
 const COOKIE_TABLE = [
   {
+    name: "_ga",
+    provider: "Google Analytics",
+    type: "Performans / analitik",
+    purpose:
+      "Ziyaretçileri birbirinden ayırt ederek site kullanımına ilişkin istatistikler oluşturmak",
+    duration: "2 yıl",
+    party: "Birinci taraf; Google hizmeti",
+  },
+  {
+    name: "_ga_<kimlik>",
+    provider: "Google Analytics",
+    type: "Performans / analitik",
+    purpose: "Oturum durumunu saklamak ve oturumları ölçmek",
+    duration: "2 yıl",
+    party: "Birinci taraf; Google hizmeti",
+  },
+  {
     name: "_gcl_aw",
     provider: "Google Ads",
     type: "Reklam / pazarlama",
@@ -46,6 +63,32 @@ const COOKIE_TABLE = [
     duration:
       "Sabit bir çerez süresi yoktur; silinene veya uygulama tarafından temizlenene kadar kalabilir",
     party: "Birinci taraf depolama",
+  },
+  {
+    name: "_fbp",
+    provider: "Meta (Facebook / Instagram)",
+    type: "Reklam / pazarlama",
+    purpose:
+      "Tarayıcıyı tanıyarak reklam dönüşümlerini ölçmek ve ilgili reklamları göstermek",
+    duration: "90 gün",
+    party: "Birinci taraf; Meta tarafından okunabilir",
+  },
+  {
+    name: "_fbc",
+    provider: "Meta (Facebook / Instagram)",
+    type: "Reklam / pazarlama",
+    purpose:
+      "Meta reklamına tıklanarak gelindiğinde tıklama bilgisini saklayıp dönüşümü reklamla ilişkilendirmek",
+    duration: "90 gün",
+    party: "Birinci taraf; Meta tarafından okunabilir",
+  },
+  {
+    name: "fr",
+    provider: "Meta (facebook.com)",
+    type: "Reklam / pazarlama",
+    purpose: "Reklam gösterimi, ölçümü ve hedeflemesi",
+    duration: "90 gün",
+    party: "Üçüncü taraf",
   },
   {
     name: "YSC",
@@ -327,6 +370,15 @@ export default function CerezPolitikasiPage() {
           </tbody>
         </table>
       </div>
+      <p>
+        İnternet sitemizde Google etiketleri, Google İzin Modu (Consent Mode) ile
+        çalışmaktadır. Performans veya pazarlama çerezlerine rıza vermediğiniz sürece
+        bu kategorilerdeki çerezler cihazınıza yerleştirilmez ve okunmaz; Google’a
+        yalnızca çerez içermeyen, sizi tanımlamaya yönelik bir kimlik taşımayan toplu
+        ölçüm sinyalleri (ör. sayfanın ziyaret edildiği veya indirme yapıldığı bilgisi)
+        iletilir. Diğer reklam ortaklarımızın etiketleri, pazarlama çerezlerine rıza
+        vermediğiniz sürece hiç çalıştırılmaz.
+      </p>
 
       <Heading>Tarayıcı Ayarlarından Çerez Ayarları</Heading>
       <p>

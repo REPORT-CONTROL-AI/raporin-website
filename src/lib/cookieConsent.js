@@ -60,6 +60,8 @@ export function writeConsent(categories) {
   }
 
   applyConsentToGtag(value);
+  // GTM'de rızaya bağlı etiketlerin (ör. Meta Pixel) aynı sayfada tetiklenebilmesi için
+  window.dataLayer.push({ event: "cookie_consent_update", cookie_consent: value });
   window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: value }));
 
   return value;
