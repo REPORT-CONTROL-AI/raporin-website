@@ -6,14 +6,14 @@ const baseUrl = "https://raporin.com";
 // Statik sayfalar. Yeni bir sayfa eklendiğinde buraya da eklenmelidir.
 const staticRoutes = [
   { path: "", changeFrequency: "weekly", priority: 1 },
-  { path: "/download", changeFrequency: "weekly", priority: 0.9 },
-  { path: "/about", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/indir", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/hakkimizda", changeFrequency: "monthly", priority: 0.8 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
   { path: "/referanslar", changeFrequency: "monthly", priority: 0.7 },
   { path: "/en", changeFrequency: "monthly", priority: 0.6 },
   { path: "/en/about", changeFrequency: "monthly", priority: 0.5 },
   { path: "/en/download", changeFrequency: "monthly", priority: 0.5 },
-  { path: "/privacy", changeFrequency: "yearly", priority: 0.4 },
+  { path: "/gizlilik-politikasi", changeFrequency: "yearly", priority: 0.4 },
   { path: "/kvkk", changeFrequency: "yearly", priority: 0.4 },
   { path: "/kvkk/kullanim-kosullari-ve-uyelik-sozlesmesi", changeFrequency: "yearly", priority: 0.4 },
   { path: "/kvkk/eczaneler-icin-aydinlatma-metni", changeFrequency: "yearly", priority: 0.4 },

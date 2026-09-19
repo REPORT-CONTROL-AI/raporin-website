@@ -15,7 +15,7 @@ const nextConfig = {
     minimumCacheTTL: 60,
   },
   
-  // Eski hukuki metin adresleri KVKK sayfasının altına taşındı
+  // Eski adresler kalıcı olarak yeni Türkçe adreslere yönlenir.
   async redirects() {
     return [
       {
@@ -23,6 +23,9 @@ const nextConfig = {
         destination: '/kvkk/cerez-politikasi',
         permanent: true,
       },
+      { source: '/about', destination: '/hakkimizda', permanent: true },
+      { source: '/download', destination: '/indir', permanent: true },
+      { source: '/privacy', destination: '/gizlilik-politikasi', permanent: true },
     ];
   },
 

@@ -1,3 +1,17 @@
+export const metadata = {
+  title: "Gizlilik Politikası",
+  description:
+    "RaporinAI gizlilik politikası: uygulamanın hangi verileri hangi amaçla işlediği ve kişisel bilgilerin üçüncü taraflarla paylaşılmaması.",
+  alternates: {
+    canonical: "https://raporin.com/gizlilik-politikasi",
+  },
+  openGraph: {
+    title: "Gizlilik Politikası | RaporinAI",
+    url: "https://raporin.com/gizlilik-politikasi",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
+};
+
 export default function PrivacyPage() {
     return (
       <main className="max-w-3xl mx-auto py-20 px-4">

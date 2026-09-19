@@ -34,9 +34,9 @@
 
 ### 5. Sayfa Bazlı Metadata
 - ✅ Ana sayfa (/)
-- ✅ Hakkımızda (/about)
+- ✅ Hakkımızda (/hakkimizda)
 - ✅ Veri Güvenliği (/data-security)
-- ✅ Uygulama İndir (/download)
+- ✅ Uygulama İndir (/indir)
 
 ## 🚀 Yapılması Gerekenler
 

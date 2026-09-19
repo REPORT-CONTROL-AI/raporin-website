@@ -36,7 +36,7 @@ export default function Footer() {
             <h3 className="font-bold text-gray-900 mb-4">Hızlı Linkler</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/about" className="text-gray-600 hover:text-teal-600 transition-colors text-sm">
+                <Link href="/hakkimizda" className="text-gray-600 hover:text-teal-600 transition-colors text-sm">
                   Hakkımızda
                 </Link>
               </li>

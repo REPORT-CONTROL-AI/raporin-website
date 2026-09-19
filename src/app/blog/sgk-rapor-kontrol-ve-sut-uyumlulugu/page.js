@@ -2,9 +2,20 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata = {
-    title: "SGK Rapor Kontrol Süreci ve SUT Uyumluluğu | RaporinAI Blog",
+    title: "SGK Rapor Kontrol Süreci ve SUT Uyumluluğu",
     description: "Eczaneler için SGK rapor kontrol süreci nasıl işler? SUT (Sağlık Uygulama Tebliği) uyumluluğu neden önemlidir? Kesintileri önlemek için ipuçları.",
-    keywords: ["SGK rapor kontrol", "SUT uyumluluğu", "eczane rapor analizi", "medula rapor kontrol", "sağlık uygulama tebliği", "eczane kesinti önleme"]
+    keywords: ["SGK rapor kontrol", "SUT uyumluluğu", "eczane rapor analizi", "medula rapor kontrol", "sağlık uygulama tebliği", "eczane kesinti önleme"],
+    alternates: {
+        canonical: "https://raporin.com/blog/sgk-rapor-kontrol-ve-sut-uyumlulugu",
+    },
+    openGraph: {
+        title: "SGK Rapor Kontrol Süreci ve SUT Uyumluluğu | RaporinAI Blog",
+        description: "Eczaneler için SGK rapor kontrol süreci nasıl işler? SUT uyumluluğu neden önemlidir? Kesintileri önlemek için ipuçları.",
+        url: "https://raporin.com/blog/sgk-rapor-kontrol-ve-sut-uyumlulugu",
+        type: "article",
+        publishedTime: "2025-11-27",
+        images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    },
 };
 
 export default function BlogPost() {
@@ -75,7 +86,7 @@ export default function BlogPost() {
                         <p className="text-teal-700 mb-4">
                             RaporinAI, güncel SUT kurallarını anlık olarak takip eder ve raporlarınızı yapay zeka ile analiz eder. Hatalı raporları Medula&apos;ya girmeden tespit ederek sizi olası kesintilerden korur.
                         </p>
-                        <Link href="/download" className="inline-block bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors">
+                        <Link href="/indir" className="inline-block bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors">
                             Ücretsiz Deneyin
                         </Link>
                     </div>

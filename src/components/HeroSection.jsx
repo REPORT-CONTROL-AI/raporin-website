@@ -115,7 +115,7 @@ export default function HeroSection() {
           {/* CTA Butonları */}
           <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
             <motion.a
-              href="/download"
+              href="/indir"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.99 }}
               className="relative inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-8 sm:py-4 rounded-full overflow-hidden group cursor-pointer shadow-lg shadow-emerald-500/25 transition-shadow hover:shadow-xl hover:shadow-emerald-500/35"

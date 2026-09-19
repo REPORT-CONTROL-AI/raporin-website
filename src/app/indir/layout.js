@@ -7,13 +7,18 @@ export const metadata = {
   description:
     "RaporinAI masaüstü uygulamasını Windows bilgisayarınıza ücretsiz indirin. Medula'dan aktardığınız reçeteleri ve raporları SUT kurallarına göre analiz edin, SGK kesintilerini fatura teslim etmeden önce önleyin.",
   alternates: {
-    canonical: "https://raporin.com/download",
+    canonical: "https://raporin.com/indir",
+    languages: {
+      "tr-TR": "https://raporin.com/indir",
+      en: "https://raporin.com/en/download",
+      "x-default": "https://raporin.com/indir",
+    },
   },
   openGraph: {
     title: "RaporinAI İndir — Eczane Rapor Kontrol Programı (Windows)",
     description:
       "RaporinAI masaüstü uygulamasını Windows'a ücretsiz indirin. Medula entegrasyonu ile toplu reçete ve rapor analizi.",
-    url: "https://raporin.com/download",
+    url: "https://raporin.com/indir",
     type: "website",
   },
 };

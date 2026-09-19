@@ -17,7 +17,7 @@ export default function LayoutWrapper() {
 
       {/* 🎭 Sabit Maskot - Sağ tarafta scroll ile birlikte hareket eder */}
       <div className="fixed right-4 lg:right-8 top-24 z-40 hidden lg:block">
-        <Link href="/download" className="block cursor-pointer hover:scale-105 transition-transform duration-300">
+        <Link href="/indir" className="block cursor-pointer hover:scale-105 transition-transform duration-300">
           <div className="animate-float">
             <Image
               src="/raporin-mascot.png"

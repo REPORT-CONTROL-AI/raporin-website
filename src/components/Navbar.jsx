@@ -19,7 +19,7 @@ export default function Navbar() {
         {/* Masaüstü menü */}
         <div className="hidden lg:flex items-center gap-5 xl:gap-8 text-gray-700 font-medium">
           <Link href="/" className="hover:text-[#0F918B]">Ana Sayfa</Link>
-          <Link href="/about" className="hover:text-[#0F918B]">Hakkımızda</Link>
+          <Link href="/hakkimizda" className="hover:text-[#0F918B]">Hakkımızda</Link>
           <Link href="/#features" className="hover:text-[#0F918B]">Özellikler</Link>
           <Link href="/#pricing" className="hover:text-[#0F918B]">Fiyatlandırma</Link>
           <Link href="/referanslar" className="hover:text-[#0F918B]">Referanslar</Link>
@@ -29,7 +29,7 @@ export default function Navbar() {
 
         {/* CTA (masaüstü) - Promosyon Badge */}
         <div className="hidden lg:block">
-          <Link href="/download">
+          <Link href="/indir">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -69,13 +69,13 @@ export default function Navbar() {
       {menuOpen && (
         <div className="lg:hidden bg-white shadow-md border-t border-gray-100 flex flex-col items-center gap-4 py-4">
           <Link href="/" onClick={() => setMenuOpen(false)}>Ana Sayfa</Link>
-          <Link href="/about" onClick={() => setMenuOpen(false)}>Hakkımızda</Link>
+          <Link href="/hakkimizda" onClick={() => setMenuOpen(false)}>Hakkımızda</Link>
           <Link href="/#features" onClick={() => setMenuOpen(false)}>Özellikler</Link>
           <Link href="/#pricing" onClick={() => setMenuOpen(false)}>Fiyatlandırma</Link>
           <Link href="/referanslar" onClick={() => setMenuOpen(false)}>Referanslar</Link>
           <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
           <Link href="/#contact" onClick={() => setMenuOpen(false)}>İletişim</Link>
-          <Link href="/download" onClick={() => setMenuOpen(false)}>
+          <Link href="/indir" onClick={() => setMenuOpen(false)}>
             <motion.div
               whileTap={{ scale: 0.95 }}
               className="relative group cursor-pointer mt-2"
