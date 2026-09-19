@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { blogPosts } from "../../lib/blogPosts";
 
 export const metadata = {
@@ -37,11 +38,20 @@ export default function BlogPage() {
                             href={`/blog/${post.slug}`}
                             className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col"
                         >
-                            <div className="relative h-48 bg-teal-50 flex items-center justify-center overflow-hidden">
-                                {/* Placeholder for image if not exists */}
-                                <div className="text-teal-600 text-6xl opacity-20">
-                                    📄
-                                </div>
+                            <div className="relative aspect-video bg-teal-50 flex items-center justify-center overflow-hidden">
+                                {post.image ? (
+                                    <Image
+                                        src={post.image}
+                                        alt={post.title}
+                                        fill
+                                        sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
+                                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                    />
+                                ) : (
+                                    <div className="text-teal-600 text-6xl opacity-20">
+                                        📄
+                                    </div>
+                                )}
                             </div>
 
                             <div className="p-6 flex flex-col flex-grow">

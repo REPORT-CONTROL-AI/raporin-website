@@ -25,7 +25,7 @@ export function GET() {
     `- [Windows uygulamasını indirin](${SITE_URL}/indir)`,
     `- [RaporinAI hakkında](${SITE_URL}/hakkimizda)`,
     `- [Haberler ve duyurular](${SITE_URL}/referanslar)`,
-    `- [Sıkça sorulan sorular](${SITE_URL}/#faq)`,
+    `- [Sıkça sorulan sorular](${SITE_URL}/#sss)`,
     `- [KVKK ve hukuki metinler](${SITE_URL}/kvkk)`,
     "",
   ].join("\n");

@@ -91,7 +91,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="py-28 bg-gradient-to-b from-white via-[#F9FFFD] to-[#E8FFFB]">
+    <section id="nasil-calisir" className="py-28 bg-gradient-to-b from-white via-[#F9FFFD] to-[#E8FFFB]">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           className="text-center mb-20"

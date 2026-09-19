@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function PricingSection() {
   return (
     <section
-      id="pricing"
+      id="fiyatlandirma"
       className="py-24 bg-gradient-to-b from-white via-[#F8FFFD] to-[#E9FFFB]"
     >
       <div className="max-w-4xl mx-auto px-6 text-center">

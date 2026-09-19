@@ -16,7 +16,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="py-20 bg-gradient-to-b from-[#E8FFFB] via-white to-[#F9FFFD]">
+    <section id="sss" className="py-20 bg-gradient-to-b from-[#E8FFFB] via-white to-[#F9FFFD]">
       <div className="max-w-5xl mx-auto px-6">
         {/* Başlık */}
         <motion.div
@@ -123,7 +123,7 @@ export default function FAQSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/#contact"
+              href="/#iletisim"
               className="inline-block px-8 py-4 bg-gradient-to-r from-teal-600 to-emerald-600 text-white font-semibold rounded-full hover:shadow-xl transition-all hover:scale-105"
             >
               Bize Ulaşın

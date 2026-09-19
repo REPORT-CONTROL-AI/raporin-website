@@ -245,7 +245,7 @@ export default function AboutPage() {
               Hemen Başlayın
             </Link>
             <Link
-              href="/#contact"
+              href="/#iletisim"
               className="inline-block px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition-all"
             >
               Bize Ulaşın

@@ -146,7 +146,7 @@ export default function HeroSection() {
             </motion.a>
 
             <motion.a
-              href="#how-it-works"
+              href="#nasil-calisir"
               whileHover={{ scale: 1.02 }}
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-full text-[#0F918B] bg-white/70 border border-teal-200 hover:border-[#17C6A3] hover:bg-white transition-all duration-300 backdrop-blur-sm"
             >

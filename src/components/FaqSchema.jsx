@@ -4,7 +4,7 @@ export default function FaqSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "@id": "https://raporin.com/#faq",
+    "@id": "https://raporin.com/#sss",
     mainEntity: homeFaqs.flatMap(({ questions }) => questions.map(({ q, a }) => ({
       "@type": "Question",
       name: q,

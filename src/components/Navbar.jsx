@@ -20,11 +20,11 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-5 xl:gap-8 text-gray-700 font-medium">
           <Link href="/" className="hover:text-[#0F918B]">Ana Sayfa</Link>
           <Link href="/hakkimizda" className="hover:text-[#0F918B]">Hakkımızda</Link>
-          <Link href="/#features" className="hover:text-[#0F918B]">Özellikler</Link>
-          <Link href="/#pricing" className="hover:text-[#0F918B]">Fiyatlandırma</Link>
+          <Link href="/#ozellikler" className="hover:text-[#0F918B]">Özellikler</Link>
+          <Link href="/#fiyatlandirma" className="hover:text-[#0F918B]">Fiyatlandırma</Link>
           <Link href="/referanslar" className="hover:text-[#0F918B]">Referanslar</Link>
           <Link href="/blog" className="hover:text-[#0F918B]">Blog</Link>
-          <Link href="/#contact" className="hover:text-[#0F918B]">İletişim</Link>
+          <Link href="/#iletisim" className="hover:text-[#0F918B]">İletişim</Link>
         </div>
 
         {/* CTA (masaüstü) - Promosyon Badge */}
@@ -39,10 +39,6 @@ export default function Navbar() {
               <div className="absolute -inset-1 bg-gradient-to-r from-rose-400 to-orange-400 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-200"></div>
 
               <div className="relative flex items-center gap-3 px-5 py-2 rounded-full bg-gradient-to-r from-rose-500 via-orange-400 to-amber-400 shadow-md border border-white/20">
-
-
-                <span className="text-2xl animate-bounce">🎁</span>
-
                 <div className="flex flex-col items-start leading-none gap-0.5">
                   <span className="text-xs font-bold text-white tracking-wide">
                     Uygulamayı İndir
@@ -70,11 +66,11 @@ export default function Navbar() {
         <div className="lg:hidden bg-white shadow-md border-t border-gray-100 flex flex-col items-center gap-4 py-4">
           <Link href="/" onClick={() => setMenuOpen(false)}>Ana Sayfa</Link>
           <Link href="/hakkimizda" onClick={() => setMenuOpen(false)}>Hakkımızda</Link>
-          <Link href="/#features" onClick={() => setMenuOpen(false)}>Özellikler</Link>
-          <Link href="/#pricing" onClick={() => setMenuOpen(false)}>Fiyatlandırma</Link>
+          <Link href="/#ozellikler" onClick={() => setMenuOpen(false)}>Özellikler</Link>
+          <Link href="/#fiyatlandirma" onClick={() => setMenuOpen(false)}>Fiyatlandırma</Link>
           <Link href="/referanslar" onClick={() => setMenuOpen(false)}>Referanslar</Link>
           <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
-          <Link href="/#contact" onClick={() => setMenuOpen(false)}>İletişim</Link>
+          <Link href="/#iletisim" onClick={() => setMenuOpen(false)}>İletişim</Link>
           <Link href="/indir" onClick={() => setMenuOpen(false)}>
             <motion.div
               whileTap={{ scale: 0.95 }}
@@ -82,8 +78,6 @@ export default function Navbar() {
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-rose-400 to-orange-400 rounded-full blur opacity-20 transition duration-200"></div>
               <div className="relative flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-rose-500 via-orange-400 to-amber-400 shadow-md border border-white/20">
-
-                <span className="text-2xl animate-bounce">🎁</span>
                 <div className="flex flex-col items-start leading-none gap-0.5">
                   <span className="text-sm font-bold text-white tracking-wide">Uygulamayı İndir</span>
                   <span className="text-xs font-extrabold text-yellow-100 uppercase tracking-widest drop-shadow-md whitespace-nowrap bg-white/10 px-1.5 py-0.5 rounded-sm">✨ ŞİMDİ ÜCRETSİZ</span>

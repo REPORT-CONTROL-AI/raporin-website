@@ -67,7 +67,7 @@ export default function ContactSection() {
 
   return (
     <section
-      id="contact"
+      id="iletisim"
       className="py-24 bg-gradient-to-b from-[#F9FFFD] via-[#EDFFFB] to-[#E3FFFA]"
     >
       <div className="max-w-5xl mx-auto px-6 text-center">

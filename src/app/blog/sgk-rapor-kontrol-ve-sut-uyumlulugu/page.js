@@ -14,7 +14,7 @@ export const metadata = {
         url: "https://raporin.com/blog/sgk-rapor-kontrol-ve-sut-uyumlulugu",
         type: "article",
         publishedTime: "2025-11-27",
-        images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+        images: [{ url: "/blog1.png", width: 1672, height: 941 }],
     },
 };
 

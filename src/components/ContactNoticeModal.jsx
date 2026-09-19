@@ -95,10 +95,10 @@ export default function ContactNoticeModal({ open, onClose }) {
               <p>
                 Şirket olarak kurumsal internet sitemiz olan{" "}
                 <a
-                  href="https://raporin.com/#contact"
+                  href="https://raporin.com/#iletisim"
                   className="text-[#0F918B] hover:underline break-all"
                 >
-                  https://raporin.com/#contact
+                  https://raporin.com/#iletisim
                 </a>{" "}
                 adresinde yer alan iletişim formunu kullanarak bizlerle iletişime geçmeniz
                 ve talep-şikayet-görüş-önerilerinizi iletmeniz halinde kişisel verileriniz
@@ -159,10 +159,10 @@ export default function ContactNoticeModal({ open, onClose }) {
               <p>
                 Yukarıda belirtilen kişisel verilerinizi esas olarak{" "}
                 <a
-                  href="https://raporin.com/#contact"
+                  href="https://raporin.com/#iletisim"
                   className="text-[#0F918B] hover:underline break-all"
                 >
-                  https://raporin.com/#contact
+                  https://raporin.com/#iletisim
                 </a>{" "}
                 adresinde yer alan form vasıtasıyla ileteceğiniz taleplerinizi karşılamak
                 amacıyla Kanun’un 5. maddesinde belirtilen hukuki sebeplere dayalı olarak

@@ -64,7 +64,7 @@ export default function FeaturesSection() {
   };
 
   return (
-    <section id="features" className="relative py-24 bg-gradient-to-b from-white via-[#F9FFFD] to-[#E8FFFB]">
+    <section id="ozellikler" className="relative py-24 bg-gradient-to-b from-white via-[#F9FFFD] to-[#E8FFFB]">
       {/* Arka plan dokusu */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-32 left-1/4 h-80 w-80 rounded-full bg-teal-200/20 blur-3xl" />

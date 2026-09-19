@@ -41,12 +41,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#features" className="text-gray-600 hover:text-teal-600 transition-colors text-sm">
+                <Link href="/#ozellikler" className="text-gray-600 hover:text-teal-600 transition-colors text-sm">
                   Özellikler
                 </Link>
               </li>
               <li>
-                <Link href="/#pricing" className="text-gray-600 hover:text-teal-600 transition-colors text-sm">
+                <Link href="/#fiyatlandirma" className="text-gray-600 hover:text-teal-600 transition-colors text-sm">
                   Fiyatlandırma
                 </Link>
               </li>
@@ -56,7 +56,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#contact" className="text-gray-600 hover:text-teal-600 transition-colors text-sm">
+                <Link href="/#iletisim" className="text-gray-600 hover:text-teal-600 transition-colors text-sm">
                   İletişim
                 </Link>
               </li>

@@ -36,7 +36,6 @@ export default function NavbarEN() {
               <div className="absolute -inset-1 bg-gradient-to-r from-rose-400 to-orange-400 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-200"></div>
 
               <div className="relative flex items-center gap-3 px-5 py-2 rounded-full bg-gradient-to-r from-rose-500 via-orange-400 to-amber-400 shadow-md border border-white/20">
-                <span className="text-2xl animate-bounce">🎁</span>
                 <div className="flex flex-col items-start leading-none gap-0.5">
                   <span className="text-xs font-bold text-white tracking-wide">
                     Download App
@@ -74,7 +73,6 @@ export default function NavbarEN() {
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-rose-400 to-orange-400 rounded-full blur opacity-20 transition duration-200"></div>
               <div className="relative flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-rose-500 via-orange-400 to-amber-400 shadow-md border border-white/20">
-                <span className="text-2xl animate-bounce">🎁</span>
                 <div className="flex flex-col items-start leading-none gap-0.5">
                   <span className="text-sm font-bold text-white tracking-wide">Download App</span>
                   <span className="text-xs font-extrabold text-yellow-100 uppercase tracking-widest drop-shadow-md whitespace-nowrap bg-white/10 px-1.5 py-0.5 rounded-sm">✨ FREE NOW</span>
