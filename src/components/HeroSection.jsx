@@ -95,7 +95,7 @@ export default function HeroSection() {
             <Plus aria-hidden="true" className={styles.cross} size={65} strokeWidth={5} />
             <Plus aria-hidden="true" className={`${styles.cross} ${styles.crossSmall}`} size={43} strokeWidth={5} />
             <div aria-hidden="true" className={styles.annotation}>
-              Eczaneniz için<br />daha akıllı bir yardımcı.
+              Eczanenizin <br />yapay zeka asistanı.
               <svg viewBox="0 0 40 48" fill="none"><path d="M11 3C32 19 27 28 13 39m0 0 2-12m-2 12 13-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </div>
 
