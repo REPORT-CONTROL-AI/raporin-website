@@ -33,36 +33,34 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white via-[#F9FFFD] to-[#E8FFFB]">
+    <main className="min-h-screen pt-20 bg-gradient-to-b from-white via-[#F9FFFD] to-[#E8FFFB]">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 lg:px-20">
+      <section className="pt-6 pb-8 sm:pt-8 sm:pb-10 px-6 lg:px-20">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-8"
+            className="mb-0"
           >
-            <Image src="/logo.png" alt="RaporinAI" width={200} height={80} className="mx-auto mb-8" />
-            <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#0F918B] via-[#12A897] to-[#17C6A3] mb-6">
-              Hakkımızda
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Eczacıların SGK rapor kontrol süreçlerini dijitalleştirerek, mali kayıpları önleyen ve zaman kazandıran yapay zeka destekli bir platformuz.
+            <Image src="/logo.png" alt="RaporinAI" width={200} height={80} className="mx-auto mb-4" />
+            <h1 className="sr-only">Hakkımızda</h1>
+            <p className="max-w-3xl mx-auto text-xl sm:text-2xl font-bold italic tracking-tight leading-relaxed text-teal-800 text-balance">
+              Eczacılığın geleceğini yapay zekâyla bugünden inşa ediyoruz.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Hikayemiz */}
-      <section className="py-16 px-6 lg:px-20">
+      <section className="pb-8 sm:pb-10 px-6 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-teal-100"
+            className="bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-teal-100"
           >
             <div className="flex items-center gap-4 mb-6">
               <FaLightbulb size={40} className="text-amber-500" />
@@ -70,21 +68,19 @@ export default function AboutPage() {
             </div>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                <strong>RaporinAI</strong>, eczacıların günlük yaşadığı en büyük sorunlardan birini çözmek için doğdu: 
-                <strong className="text-teal-600"> SGK rapor kontrol hatalarından kaynaklanan mali kayıplar.</strong>
+                <strong>RaporinAI</strong>, eczacıların reçete ve rapor kontrol süreçlerini hızlandırmak ve hata riskini daha erken görünür kılmak için geliştirildi.
               </p>
               <p>
-                Her gün onlarca raporu manuel olarak kontrol etmek zorunda kalan eczacılar, küçük bir hata nedeniyle 
-                binlerce lira SGK kesintisi ile karşılaşabiliyor. SUT uyumsuzlukları, eksik bilgiler, yanlış ICD kodları... 
-                Bu sorunlar hem zaman kaybına hem de ciddi maddi kayıplara yol açıyor.
+                Eczanelerde her gün çok sayıda reçete ve rapor, güncel SUT kurallarına göre kontrol ediliyor. Bu süreç manuel yürütüldüğünde hem zaman kaybına yol açabiliyor hem de bazı uyumsuzlukların gözden kaçmasına neden olabiliyor.
               </p>
               <p>
-                Biz de <strong>eczacı ve yazılım uzmanlarından oluşan ekibimizle</strong> bu soruna kalıcı bir çözüm 
-                geliştirdik. Yapay zeka teknolojisi sayesinde raporları saniyeler içinde analiz edip, olası hataları 
-                önceden tespit ediyoruz.
+                RaporinAI, yapay zekâ destekli analiz altyapısıyla reçete ve raporları saniyeler içinde inceler; olası uyumsuzlukları tespit eder ve neyin, neden dikkat gerektirdiğini açık şekilde gösterir.
+              </p>
+              <p>
+                Biz yalnızca kontrol sürecini hızlandıran bir yazılım sunmuyoruz. Eczacıların operasyonel yükünü azaltan, karar süreçlerini destekleyen ve eczacılıkta dijital dönüşümü ileri taşıyan bir teknoloji altyapısı oluşturuyoruz.
               </p>
               <p className="text-teal-700 font-semibold">
-                Amacımız basit: Eczacıların işini kolaylaştırmak, mali kayıpları önlemek ve dijital dönüşüme öncülük etmek.
+                Vizyonumuz; eczacıların günlük iş yükünü azaltan, karar süreçlerini güçlendiren ve eczacılığın yapay zekâ dönüşümüne öncülük eden güvenilir bir teknoloji ortağı olmaktır.
               </p>
             </div>
           </motion.div>
@@ -92,14 +88,14 @@ export default function AboutPage() {
       </section>
 
       {/* Teknolojimiz */}
-      <section className="py-16 px-6 lg:px-20 bg-gradient-to-br from-teal-50 to-emerald-50">
+      <section className="py-8 sm:py-10 px-6 lg:px-20 bg-gradient-to-br from-teal-50 to-emerald-50">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-6 sm:mb-8"
           >
             <div className="flex justify-center mb-4">
               <FaBrain size={50} className="text-teal-600" />
@@ -110,13 +106,13 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 items-start gap-6">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl p-8 shadow-lg border border-teal-100"
+              className="bg-white rounded-2xl p-6 shadow-lg border border-teal-100"
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
                 <FaRocket className="text-teal-600" />
@@ -155,7 +151,7 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl p-8 shadow-lg border border-teal-100"
+              className="bg-white rounded-2xl p-6 shadow-lg border border-teal-100"
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
                 <FaChartLine className="text-teal-600" />
@@ -185,14 +181,14 @@ export default function AboutPage() {
       </section>
 
       {/* Ekibimiz */}
-      <section className="py-16 px-6 lg:px-20">
+      <section className="py-8 sm:py-10 px-6 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-6 sm:mb-8"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Ekibimiz</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -200,7 +196,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
@@ -208,7 +204,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl p-8 shadow-lg border border-teal-100 text-center hover:shadow-xl transition-shadow"
+                className="bg-white rounded-2xl p-6 shadow-lg border border-teal-100 text-center hover:shadow-xl transition-shadow"
               >
                 <div className="flex justify-center mb-4">
                   {member.icon}
@@ -223,18 +219,18 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-6 lg:px-20">
+      <section className="pb-8 sm:pb-10 px-6 lg:px-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto bg-gradient-to-r from-teal-600 to-emerald-600 rounded-3xl p-12 text-center text-white shadow-2xl"
+          className="max-w-4xl mx-auto bg-gradient-to-r from-teal-600 to-emerald-600 rounded-3xl p-6 sm:p-8 text-center text-white shadow-2xl"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Siz de RaporinAI Ailesine Katılın
           </h2>
-          <p className="text-lg mb-8 opacity-90">
+          <p className="text-lg mb-6 opacity-90">
             SGK kesintilerini azaltın, zamandan tasarruf edin ve dijital dönüşümün bir parçası olun.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
