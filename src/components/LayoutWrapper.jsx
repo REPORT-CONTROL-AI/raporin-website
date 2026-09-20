@@ -15,7 +15,8 @@ export default function LayoutWrapper() {
       {/* ✅ Navbar tüm sayfalarda görünür */}
       <Navbar />
 
-      {/* 🎭 Sabit Maskot - Sağ tarafta scroll ile birlikte hareket eder */}
+      {/* Ana sayfanın ürün vitrini üzerinde sabit maskot gösterilmez. */}
+      {pathname !== "/" && (
       <div className="fixed right-4 lg:right-8 top-24 z-40 hidden lg:block">
         <Link href="/indir" className="block cursor-pointer hover:scale-105 transition-transform duration-300">
           <div className="animate-float">
@@ -31,6 +32,7 @@ export default function LayoutWrapper() {
           </div>
         </Link>
       </div>
+      )}
     </>
   );
 }

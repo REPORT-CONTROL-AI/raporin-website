@@ -1,318 +1,156 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 import Image from "next/image";
-import { Dialog } from "@headlessui/react";
-import { motion } from "framer-motion";
-import Screenshot from "./Screenshot";
-import { FaGlobe, FaLayerGroup, FaPills, FaBolt } from "react-icons/fa";
+import Link from "next/link";
+import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import { ArrowRight, BadgeCheck, ChartNoAxesColumnIncreasing, CheckCircle2, Download, Link2, Maximize2, PlayCircle, Plus, ShieldCheck, Sparkles, Store, TriangleAlert, X, XCircle } from "lucide-react";
+import styles from "./HeroSection.module.css";
 
 const screenshots = [
-  { id: 1, src: "/screens/toplu-analiz.png", alt: "Tek Tıkla Toplu Analiz" },
-  { id: 2, src: "/screens/recete-detay.png", alt: "Reçete Detayı ve Tekil Analiz" },
-  { id: 3, src: "/screens/analiz-sonuclari.png", alt: "Analiz Sonucu" },
+  {
+    id: "toplu-analiz",
+    src: "/screens/toplu-analiz.png",
+    label: "Toplu analiz",
+    title: "Reçetelerinizi tek ekrandan kontrol edin",
+    description: "Medula’dan aktardığınız reçeteleri birlikte değerlendirin.",
+    alt: "RaporinAI toplu reçete analizi ekranı",
+  },
+  {
+    id: "recete-detay",
+    src: "/screens/recete-detay.png",
+    label: "Reçete detayı",
+    title: "Reçete ve rapor detaylarını birlikte inceleyin",
+    description: "İlaç, doz ve rapor bilgilerine aynı yerden ulaşın.",
+    alt: "RaporinAI reçete detayı ve tekil analiz ekranı",
+  },
+  {
+    id: "analiz-sonuclari",
+    src: "/screens/analiz-sonuclari.png",
+    label: "Analiz sonucu",
+    title: "Kontrol sonuçlarını açıklamalarıyla görün",
+    description: "SUT kriterlerine göre tespit edilen uygunsuzlukları inceleyin.",
+    alt: "RaporinAI açıklamalı analiz sonuçları ekranı",
+  },
 ];
 
-const chips = [
-  { icon: <FaGlobe size={12} />, label: "Medulaya Entegre" },
-  { icon: <FaLayerGroup size={12} />, label: "Tek tıkla toplu analiz" },
-  { icon: <FaPills size={12} />, label: "Reçete–rapor doz kontrolü" },
-];
+const focusStyle = "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0F918B]";
 
 export default function HeroSection() {
+  const [activeIndex, setActiveIndex] = useState(1);
   const [selected, setSelected] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const nextSlide = () => {
-    setActiveIndex((prev) => (prev + 1) % screenshots.length);
-  };
-
-  const prevSlide = () => {
-    setActiveIndex((prev) => (prev - 1 + screenshots.length) % screenshots.length);
-  };
-
-  const getSlidePosition = (index) => {
-    const diff = index - activeIndex;
-    const total = screenshots.length;
-    const normalizedDiff = ((diff + total) % total);
-
-    if (normalizedDiff === 0) return 'center';
-    if (normalizedDiff === 1) return 'right';
-    if (normalizedDiff === total - 1) return 'left';
-    return 'hidden';
-  };
-
-  // Auto-play carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 4000); // Change slide every 4 seconds
-
-    return () => clearInterval(interval);
-  }, [activeIndex]);
+  const activeShot = screenshots[activeIndex];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#E8FFFB] via-[#F9FFFD] to-white py-8 sm:py-10 lg:py-14">
-      {/* Dekoratif arka plan */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 -left-32 h-[26rem] w-[26rem] rounded-full bg-teal-300/20 blur-3xl" />
-        <div className="absolute top-1/4 -right-40 h-[30rem] w-[30rem] rounded-full bg-emerald-200/30 blur-3xl" />
-      </div>
+    <section aria-labelledby="hero-title" className={styles.hero}>
+      <div className={styles.inner}>
+        <div className={styles.grid}>
+          <div className={styles.copy}>
+            <div className={styles.eyebrow}>
+              <Store aria-hidden="true" size={16} /> ECZANELER İÇİN
+            </div>
+            <h1 id="hero-title" className={styles.title}>
+              Reçete ve Rapor Kontrolünde
+              <span>Yapay Zekâ Desteği</span>
+            </h1>
+            <p className={styles.description}>
+              <strong>Yapay zekâ ile reçete ve rapor kontrolünü saniyelere indirin.</strong>{" "}
+              RaporinAI, reçetelerinizi güncel SUT kurallarına göre otomatik analiz eder;
+              doz ve rapor uyumsuzluklarını tespit eder, nedenini açıkça gösterir.
+              Kesinti risklerini faturalandırmadan önce fark edin.
+            </p>
 
-      <div className="relative max-w-[1440px] mx-auto px-6 grid items-center gap-10 lg:gap-14 lg:grid-cols-2">
+            <ul className={styles.benefits}>
+              <li><span className={styles.benefitIcon}><Link2 aria-hidden="true" size={19} /></span>Medula entegrasyonu</li>
+              <li><span className={styles.benefitIcon}><ChartNoAxesColumnIncreasing aria-hidden="true" size={19} /></span>Toplu analiz</li>
+              <li><span className={styles.benefitIcon}><ShieldCheck aria-hidden="true" size={19} /></span>Doz kontrolü</li>
+            </ul>
 
-        {/* SOL TARAF */}
-        <div className="min-w-0 text-center lg:text-left">
-          {/* Başlık — LCP elemanı: animasyonsuz, ilk boyamada tam görünür */}
-          <h1 className="text-3xl sm:text-4xl md:text-[2.6rem] xl:text-5xl font-extrabold leading-[1.15] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#0F918B] via-[#12A897] to-[#17C6A3]">
-            <span className="flex items-center justify-center lg:justify-start gap-1">
-              <Image
-                src="/eczane-logo.png"
-                alt=""
-                aria-hidden="true"
-                width={40}
-                height={40}
-                className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain"
-              />
-              {/* Görsel "E" harfi bir logo; metin karşılığı taramaya açık kalsın */}
-              <span className="sr-only">E</span>
-              <span>czaneler İçin</span>
-            </span>
-            <span className="block">Yapay Zeka Destekli Reçete ve Rapor Kontrol Programı</span>
-          </h1>
-
-          {/* Değer Önerisi */}
-          <p className="mt-4 text-gray-600 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
-            <strong>RaporinAI</strong>, eczanenin <strong>reçete ve rapor kontrol</strong> yükünü
-            üstlenen <strong>yapay zeka destekli bir eczane programı</strong>dır. Reçeteleri ve
-            raporları güncel{" "}
-            <strong>SUT</strong> kurallarına göre saniyeler içinde değerlendirir; uygunsuzlukları
-             tespit ederek{" "}
-            kesintilerin önüne geçer. Beta sürecinde tamamen{" "}
-            <strong>ÜCRETSİZ</strong>.
-          </p>
-
-          {/* Somut Fayda */}
-          <div className="mt-5 max-w-xl mx-auto lg:mx-0">
-            <div className="relative overflow-hidden rounded-2xl border border-teal-100 bg-white/85 p-5 shadow-lg shadow-teal-900/5 backdrop-blur-sm">
-              <div className="pointer-events-none absolute -right-10 -top-12 h-32 w-32 rounded-full bg-amber-100/50 blur-2xl" />
-
-              <div className="relative flex items-start gap-4 text-left">
-                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-100 to-amber-200 text-amber-600 ring-1 ring-amber-200/70">
-                  <FaBolt size={18} />
-                </div>
-                <div>
-                  <h3 className="text-gray-900 font-bold text-base sm:text-lg">
-                    Kesintilerinizi %98&apos;e Kadar Azaltın
-                  </h3>
-                  <p className="mt-1.5 text-gray-600 text-xs sm:text-sm leading-relaxed">
-                    Yapay zeka destekli analiz ile hatalı reçete ve raporları önceden tespit edin, mali kayıplarınızı önleyin.
-                  </p>
-                </div>
+            <div className={styles.actions}>
+              <Link href="/indir" className={styles.primary}>
+                <Download aria-hidden="true" size={20} />
+                Ücretsiz indir
+                <ArrowRight aria-hidden="true" size={19} />
+              </Link>
+              <a href="#nasil-calisir" className={styles.secondary}>
+                <PlayCircle aria-hidden="true" size={22} />
+                Nasıl çalıştığını gör
+              </a>
+            </div>
+            <div className={styles.socialProof}>
+              <div className={styles.pharmacyIcons} aria-hidden="true">
+                <span><Store size={23} /></span>
+                <span><Store size={23} /></span>
+                <span><Store size={23} /></span>
               </div>
+              <div className={styles.proofText}>
+                <p><strong>1.000+</strong> <span>eczane</span></p>
+                <p>Reçete ve rapor kontrolünde RaporinAI kullanıyor.</p>
+              </div>
+              <BadgeCheck aria-hidden="true" className={styles.proofBadge} size={25} />
             </div>
           </div>
 
-          {/* CTA Butonları */}
-          <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-            <motion.a
-              href="/indir"
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.99 }}
-              className="relative inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-8 sm:py-4 rounded-full overflow-hidden group cursor-pointer shadow-lg shadow-emerald-500/25 transition-shadow hover:shadow-xl hover:shadow-emerald-500/35"
-            >
-              {/* Animated gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500 bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite]" />
-
-              {/* Content */}
-              <div className="relative flex items-center gap-2.5">
-                <span className="text-xl">🎉</span>
-                <div className="flex flex-col items-start">
-                  <span className="text-white/90 font-bold text-[10px] uppercase tracking-[0.14em] leading-none">
-                    BETA - ÜCRETSİZ
-                  </span>
-                  <span className="text-white font-semibold text-sm sm:text-base mt-1">
-                    Hemen Deneyin
-                  </span>
-                </div>
-                <svg
-                  className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </div>
-            </motion.a>
-
-            <motion.a
-              href="#nasil-calisir"
-              whileHover={{ scale: 1.02 }}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-full text-[#0F918B] bg-white/70 border border-teal-200 hover:border-[#17C6A3] hover:bg-white transition-all duration-300 backdrop-blur-sm"
-            >
-              <span>Nasıl Çalışır?</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </motion.a>
-          </div>
-        </div>
-
-        {/* SAĞ TARAF - EKRAN GÖRÜNTÜLERİ */}
-        <div className="relative flex w-full min-w-0 flex-col items-center">
-          {/* Özellik çipleri */}
-          <ul className="mb-5 flex flex-wrap justify-center gap-2">
-            {chips.map((chip) => (
-              <li
-                key={chip.label}
-                className="inline-flex items-center gap-1.5 rounded-full border border-teal-200 bg-white/90 px-3 py-1.5 text-[11px] sm:text-xs font-semibold text-teal-800 shadow-sm backdrop-blur-sm"
-              >
-                <span className="text-teal-600">{chip.icon}</span>
-                {chip.label}
-              </li>
-            ))}
-          </ul>
-
-          {/* 💻 Masaüstü görünüm - 3D Carousel */}
-          <div className="hidden lg:block relative w-full">
-            {/* Arkadaki yumuşak parıltı */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-6 top-6 bottom-14 rounded-[2.5rem] bg-gradient-to-tr from-teal-200/50 via-emerald-100/40 to-transparent blur-2xl"
-            />
-
-            <div className="relative h-[360px] xl:h-[420px] flex items-center justify-center perspective-1000">
-              {screenshots.map((shot, index) => {
-                const position = getSlidePosition(index);
-                return (
-                  <motion.div
-                    key={shot.id}
-                    initial={false}
-                    animate={{
-                      x: position === 'center' ? 0 : position === 'left' ? -275 : position === 'right' ? 275 : 0,
-                      scale: position === 'center' ? 1 : position === 'hidden' ? 0.5 : 0.72,
-                      opacity: position === 'center' ? 1 : position === 'hidden' ? 0 : 0.35,
-                      filter: position === 'center' ? 'blur(0px)' : 'blur(2px)',
-                      zIndex: position === 'center' ? 20 : position === 'hidden' ? 0 : 10,
-                      rotateY: position === 'left' ? 22 : position === 'right' ? -22 : 0,
-                    }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="absolute cursor-pointer rounded-2xl bg-white p-1.5 shadow-2xl shadow-teal-900/20 ring-1 ring-teal-100"
-                    style={{ transformStyle: 'preserve-3d' }}
-                    onClick={() => {
-                      if (position === 'center') {
-                        setSelected(shot);
-                      } else if (position === 'right') {
-                        nextSlide();
-                      } else if (position === 'left') {
-                        prevSlide();
-                      }
-                    }}
-                  >
-                    <div className="relative overflow-hidden rounded-xl">
-                      <Screenshot
-                        src={shot.src}
-                        alt={shot.alt}
-                        width={400}
-                        height={270}
-                        className="object-cover rounded-xl"
-                      />
-                      {position === 'center' && (
-                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent p-3">
-                          <p className="text-white text-sm font-semibold text-center drop-shadow">
-                            {shot.alt}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                );
-              })}
+          <div className={styles.stage}>
+            <Plus aria-hidden="true" className={styles.cross} size={65} strokeWidth={5} />
+            <Plus aria-hidden="true" className={`${styles.cross} ${styles.crossSmall}`} size={43} strokeWidth={5} />
+            <div aria-hidden="true" className={styles.annotation}>
+              Eczaneniz için<br />daha akıllı bir yardımcı.
+              <svg viewBox="0 0 40 48" fill="none"><path d="M11 3C32 19 27 28 13 39m0 0 2-12m-2 12 13-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </div>
 
-            {/* Navigasyon */}
-            <button
-              onClick={prevSlide}
-              aria-label="Önceki görsel"
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-30 flex h-10 w-10 items-center justify-center rounded-full border border-teal-100 bg-white/90 text-gray-700 shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:text-[#0F918B]"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              onClick={nextSlide}
-              aria-label="Sonraki görsel"
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-30 flex h-10 w-10 items-center justify-center rounded-full border border-teal-100 bg-white/90 text-gray-700 shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:text-[#0F918B]"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+            <div className={styles.device}>
+              <div className={styles.frame}>
+                <span aria-hidden="true" className={styles.camera} />
+                <button type="button" onClick={() => setSelected(activeShot)} aria-label={`${activeShot.label} ekranını büyüt`} className={styles.screen}>
+                  <Image key={activeShot.id} src={activeShot.src} alt={activeShot.alt} fill sizes="(min-width: 1536px) 740px, (min-width: 1024px) 51vw, (min-width: 768px) 720px, calc(100vw - 56px)" preload={activeIndex === 1} className="object-contain" />
+                  <span className={styles.zoom}><Maximize2 aria-hidden="true" size={13} /> Büyüt</span>
+                </button>
+              </div>
+              <div aria-hidden="true" className={styles.base} />
+            </div>
 
-            {/* Noktalar */}
-            <div className="mt-4 flex justify-center gap-1.5">
-              {screenshots.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveIndex(index)}
-                  aria-label={`${index + 1}. görsele geç`}
-                  className={`h-1.5 rounded-full transition-all ${
-                    index === activeIndex ? 'bg-[#17C6A3] w-7' : 'bg-teal-200 hover:bg-teal-300 w-1.5'
-                  }`}
-                />
+            <div className={styles.result}>
+              <div className={styles.resultHeading}>
+                <span><Sparkles aria-hidden="true" size={17} /> Açıklamalı analiz</span>
+                <small>SUT kriterlerine göre</small>
+              </div>
+              <ul className={styles.resultGrid} aria-label="Analizde gösterilen sonuç türleri">
+                <li className={styles.status}><CheckCircle2 aria-hidden="true" size={19} /> Uygun</li>
+                <li className={styles.status}><TriangleAlert aria-hidden="true" size={19} /> Dikkat edilmeli</li>
+                <li className={styles.status}><XCircle aria-hidden="true" size={19} /> Uygun değil</li>
+              </ul>
+            </div>
+
+            <div className="sr-only" aria-live="polite" aria-atomic="true">
+              <h2>{activeShot.title}</h2>
+              <p>{activeShot.description}</p>
+            </div>
+            <div role="group" aria-label="Uygulama ekranları" className={styles.tabs}>
+              {screenshots.map((shot, index) => (
+                <button key={shot.id} type="button" aria-pressed={index === activeIndex} onClick={() => setActiveIndex(index)} className={styles.tab}>
+                  <span aria-hidden="true" className={styles.tabDot} />{shot.label}
+                </button>
               ))}
             </div>
-          </div>
 
-          {/* 📱 Mobil görünüm – Kaydırılabilir galeri */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="flex lg:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-3 w-full min-w-0 px-1 scrollbar-hide"
-          >
-            {screenshots.map((shot) => (
-              <motion.div
-                key={shot.id}
-                whileTap={{ scale: 0.97 }}
-                className="snap-center shrink-0 w-64 sm:w-72 rounded-2xl bg-white p-1.5 shadow-lg ring-1 ring-teal-100 cursor-pointer transition-shadow hover:shadow-xl"
-                onClick={() => setSelected(shot)}
-              >
-                <Screenshot
-                  src={shot.src}
-                  alt={shot.alt}
-                  width={280}
-                  height={190}
-                  className="w-full object-cover rounded-xl"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+          </div>
         </div>
+        <div aria-hidden="true" className={styles.signature}>TEKNOLOJİYLE DAHA GÜÇLÜ ECZANELER</div>
       </div>
 
-      {/* MODAL - TAM BOY GÖRÜNTÜ */}
-      <Dialog open={!!selected} onClose={() => setSelected(null)} className="relative z-50">
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-3 sm:p-4">
-          <Dialog.Panel className="relative max-w-4xl w-full">
-            {selected && (
-              <Image
-                src={selected.src}
-                alt={selected.alt}
-                width={1000}
-                height={700}
-                className="rounded-lg sm:rounded-xl shadow-2xl object-contain"
-              />
-            )}
-            <button
-              onClick={() => setSelected(null)}
-              className="absolute top-3 right-3 sm:top-4 sm:right-4 text-white text-2xl sm:text-3xl font-light hover:opacity-80 bg-black/30 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center"
-            >
-              ✕
-            </button>
-          </Dialog.Panel>
+      <Dialog open={!!selected} onClose={() => setSelected(null)} className="relative z-[100]">
+        <div className="fixed inset-0 bg-gray-950/75 backdrop-blur-sm" aria-hidden="true" />
+        <div className="fixed inset-0 flex items-center justify-center overflow-y-auto p-3 sm:p-6">
+          <DialogPanel className="w-full max-w-6xl overflow-hidden rounded-2xl bg-white shadow-2xl">
+            <div className="flex items-center justify-between gap-3 border-b border-teal-100 px-4 py-3">
+              <DialogTitle className="text-sm font-semibold text-gray-900 sm:text-base">{selected?.title}</DialogTitle>
+              <button type="button" onClick={() => setSelected(null)} aria-label="Önizlemeyi kapat" className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-gray-600 hover:bg-teal-50 ${focusStyle}`}>
+                <X aria-hidden="true" className="h-5 w-5" />
+              </button>
+            </div>
+            {selected && <Image src={selected.src} alt={selected.alt} width={2880} height={1624} sizes="(min-width: 1200px) 1152px, 100vw" className="max-h-[75dvh] w-full object-contain" />}
+          </DialogPanel>
         </div>
       </Dialog>
     </section>

@@ -2,91 +2,61 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { Download, Menu, Sparkles, X } from "lucide-react";
+
+const links = [
+  { href: "/", label: "Ana Sayfa" },
+  { href: "/hakkimizda", label: "Hakkımızda" },
+  { href: "/#ozellikler", label: "Özellikler" },
+  { href: "/#fiyatlandirma", label: "Fiyatlandırma" },
+  { href: "/referanslar", label: "Referanslar" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#iletisim", label: "İletişim" },
+];
+const focusStyle = "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-700";
+const downloadStyle = `min-h-12 items-center justify-center gap-2.5 rounded-xl border border-teal-600/10 bg-gradient-to-r from-[#008C87] to-[#00A58E] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-700/10 transition-colors hover:from-teal-800 hover:to-teal-700 ${focusStyle}`;
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isHome = pathname === "/";
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-lg border-b border-[#EAF9F5]/60 shadow-sm">
-      <div className="max-w-[1440px] mx-auto w-full flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="RaporinAI" width={200} height={60} priority />
+    <header className="fixed inset-x-0 top-0 z-50 font-sans">
+      {isHome && (
+        <div className="flex h-8 items-center justify-center gap-2 bg-gradient-to-r from-[#076E6B] via-[#009A87] to-[#076E6B] px-2 text-[11px] font-medium text-white sm:gap-3 sm:text-xs">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#C5FFE7] px-2.5 py-0.5 text-[10px] font-extrabold tracking-wide text-[#075F55] sm:text-xs">
+            <Sparkles aria-hidden="true" size={13} /> ŞİMDİ ÜCRETSİZ
+          </span>
+          <span>Beta süresince tüm özellikler açık</span>
+        </div>
+      )}
+    <nav aria-label="Ana menü" className="border-b border-teal-100/60 bg-white/90 font-sans backdrop-blur-xl">
+      <div className="mx-auto flex h-20 max-w-[1536px] items-center justify-between gap-6 px-6 lg:px-10">
+        <Link href="/" aria-label="RaporinAI ana sayfa" className={`shrink-0 rounded ${focusStyle}`}>
+          <Image src="/logo.png" alt="RaporinAI" width={200} height={60} priority className="h-auto w-[174px] xl:w-[190px]" />
         </Link>
-
-        {/* Masaüstü menü */}
-        <div className="hidden lg:flex items-center gap-5 xl:gap-8 text-gray-700 font-medium">
-          <Link href="/" className="hover:text-[#0F918B]">Ana Sayfa</Link>
-          <Link href="/hakkimizda" className="hover:text-[#0F918B]">Hakkımızda</Link>
-          <Link href="/#ozellikler" className="hover:text-[#0F918B]">Özellikler</Link>
-          <Link href="/#fiyatlandirma" className="hover:text-[#0F918B]">Fiyatlandırma</Link>
-          <Link href="/referanslar" className="hover:text-[#0F918B]">Referanslar</Link>
-          <Link href="/blog" className="hover:text-[#0F918B]">Blog</Link>
-          <Link href="/#iletisim" className="hover:text-[#0F918B]">İletişim</Link>
+        <div className="hidden items-center gap-5 text-[13px] font-medium text-slate-600 xl:flex 2xl:gap-7">
+          {links.map(({ href, label }) => (
+            <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined} className={`relative py-3 transition-colors hover:text-teal-700 ${focusStyle} ${pathname === href ? "font-semibold text-teal-700 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-teal-500" : ""}`}>
+              {label}
+            </Link>
+          ))}
         </div>
-
-        {/* CTA (masaüstü) - Promosyon Badge */}
-        <div className="hidden lg:block">
-          <Link href="/indir">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative group cursor-pointer"
-            >
-              {/* Arka plan parlama efekti */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-rose-400 to-orange-400 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-200"></div>
-
-              <div className="relative flex items-center gap-3 px-5 py-2 rounded-full bg-gradient-to-r from-rose-500 via-orange-400 to-amber-400 shadow-md border border-white/20">
-                <div className="flex flex-col items-start leading-none gap-0.5">
-                  <span className="text-xs font-bold text-white tracking-wide">
-                    Uygulamayı İndir
-                  </span>
-                  <span className="text-xs font-extrabold text-yellow-100 uppercase tracking-widest drop-shadow-md whitespace-nowrap bg-white/10 px-1.5 py-0.5 rounded-sm">
-                    ✨ ŞİMDİ ÜCRETSİZ
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          </Link>
-        </div>
-
-        {/* Mobil menü butonu */}
-        <button
-          className="lg:hidden text-gray-800"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        <Link href="/indir" className={`hidden xl:inline-flex ${downloadStyle}`}><Download aria-hidden="true" size={18} />Uygulamayı indir</Link>
+        <button type="button" aria-label={menuOpen ? "Menüyü kapat" : "Menüyü aç"} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen(!menuOpen)} className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-slate-700 hover:bg-teal-50 xl:hidden ${focusStyle}`}>
+          {menuOpen ? <X aria-hidden="true" size={26} /> : <Menu aria-hidden="true" size={26} />}
         </button>
       </div>
-
-      {/* Mobil menü dropdown */}
       {menuOpen && (
-        <div className="lg:hidden bg-white shadow-md border-t border-gray-100 flex flex-col items-center gap-4 py-4">
-          <Link href="/" onClick={() => setMenuOpen(false)}>Ana Sayfa</Link>
-          <Link href="/hakkimizda" onClick={() => setMenuOpen(false)}>Hakkımızda</Link>
-          <Link href="/#ozellikler" onClick={() => setMenuOpen(false)}>Özellikler</Link>
-          <Link href="/#fiyatlandirma" onClick={() => setMenuOpen(false)}>Fiyatlandırma</Link>
-          <Link href="/referanslar" onClick={() => setMenuOpen(false)}>Referanslar</Link>
-          <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
-          <Link href="/#iletisim" onClick={() => setMenuOpen(false)}>İletişim</Link>
-          <Link href="/indir" onClick={() => setMenuOpen(false)}>
-            <motion.div
-              whileTap={{ scale: 0.95 }}
-              className="relative group cursor-pointer mt-2"
-            >
-              <div className="absolute -inset-1 bg-gradient-to-r from-rose-400 to-orange-400 rounded-full blur opacity-20 transition duration-200"></div>
-              <div className="relative flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-rose-500 via-orange-400 to-amber-400 shadow-md border border-white/20">
-                <div className="flex flex-col items-start leading-none gap-0.5">
-                  <span className="text-sm font-bold text-white tracking-wide">Uygulamayı İndir</span>
-                  <span className="text-xs font-extrabold text-yellow-100 uppercase tracking-widest drop-shadow-md whitespace-nowrap bg-white/10 px-1.5 py-0.5 rounded-sm">✨ ŞİMDİ ÜCRETSİZ</span>
-                </div>
-              </div>
-            </motion.div>
-          </Link>
+        <div id="mobile-navigation" className="flex flex-col gap-1 overflow-y-auto border-t border-teal-100 bg-white px-6 py-4 shadow-xl shadow-teal-900/5 xl:hidden" style={{ maxHeight: `calc(100dvh - ${isHome ? 112 : 80}px)` }} onKeyDown={(event) => { if (event.key === "Escape") { setMenuOpen(false); document.querySelector('[aria-controls="mobile-navigation"]')?.focus(); } }}>
+          {links.map(({ href, label }) => <Link key={href} href={href} onClick={() => setMenuOpen(false)} className={`rounded-lg px-3 py-3 text-sm font-medium text-slate-600 hover:bg-teal-50 hover:text-teal-700 ${focusStyle}`}>{label}</Link>)}
+          <Link href="/indir" onClick={() => setMenuOpen(false)} className={`mt-2 inline-flex ${downloadStyle}`}><Download aria-hidden="true" size={18} />Uygulamayı indir</Link>
         </div>
       )}
     </nav>
+    </header>
   );
 }

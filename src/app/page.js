@@ -11,10 +11,10 @@ import ProductSchema from "../components/ProductSchema";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="[&_:target]:scroll-mt-32">
       <FaqSchema />
       <ProductSchema />
-      <div className="pt-20">
+      <div className="pt-28">
         <HeroSection />
         <FeaturesSection />
         <HowItWorks />
