@@ -17,6 +17,9 @@ const staticRoutes = [
   { path: "/kvkk", changeFrequency: "yearly", priority: 0.4 },
   { path: "/kvkk/kullanim-kosullari-ve-uyelik-sozlesmesi", changeFrequency: "yearly", priority: 0.4 },
   { path: "/kvkk/eczaneler-icin-aydinlatma-metni", changeFrequency: "yearly", priority: 0.4 },
+  { path: "/kvkk/mesafeli-satis-sozlesmesi", changeFrequency: "yearly", priority: 0.4 },
+  { path: "/kvkk/on-bilgilendirme-formu", changeFrequency: "yearly", priority: 0.4 },
+  { path: "/kvkk/teslimat-ve-iade-sartlari", changeFrequency: "yearly", priority: 0.4 },
   { path: "/kvkk/uygulama-cerez-aydinlatma-metni", changeFrequency: "yearly", priority: 0.3 },
   { path: "/kvkk/cerez-politikasi", changeFrequency: "yearly", priority: 0.3 },
 ];

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import CookieSettingsLink from "./CookieSettingsLink";
 import { solutionPages, solutionSlugs } from "../lib/solutionPages";
+import { LEGAL_DOCUMENTS } from "./legal/documents";
 import { FaTwitter, FaLinkedin, FaInstagram, FaEnvelope, FaBuilding, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function Footer() {
@@ -116,6 +117,23 @@ export default function Footer() {
           </ul>
         </div>
 
+        {/* Hukuki Metinler — Çözümler bloğuyla aynı ızgara düzeni */}
+        <div className="border-t border-gray-200 pt-8 mt-8">
+          <h3 className="font-bold text-gray-900 mb-4">Hukuki Metinler</h3>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2">
+            {LEGAL_DOCUMENTS.map((doc) => (
+              <li key={doc.href}>
+                <Link
+                  href={doc.href}
+                  className="text-gray-600 hover:text-teal-600 transition-colors text-sm"
+                >
+                  {doc.navTitle}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         {/* Alt Bölüm */}
         <div className="border-t border-gray-200 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
@@ -126,12 +144,6 @@ export default function Footer() {
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm">
               <Link href="/kvkk" className="text-gray-600 hover:text-teal-600 transition-colors">
                 KVKK ve Hukuki Metinler
-              </Link>
-              <Link href="/kvkk/kullanim-kosullari-ve-uyelik-sozlesmesi" className="text-gray-600 hover:text-teal-600 transition-colors">
-                Kullanım Koşulları ve Üyelik Sözleşmesi
-              </Link>
-              <Link href="/kvkk/cerez-politikasi" className="text-gray-600 hover:text-teal-600 transition-colors">
-                Çerez Politikası
               </Link>
               <CookieSettingsLink label="Çerez Ayarları" className="no-underline hover:underline" />
             </div>
