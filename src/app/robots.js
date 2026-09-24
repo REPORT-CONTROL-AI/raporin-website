@@ -14,7 +14,7 @@ const AI_CRAWLERS = [
   'Applebot-Extended',
 ];
 
-const PRIVATE_PATHS = ["/api/", "/private/", "/reset-password", "/verify-email"];
+const PRIVATE_PATHS = ["/api/", "/private/", "/reset-password", "/verify-email", "/hesabim"];
 
 export default function robots() {
   return {

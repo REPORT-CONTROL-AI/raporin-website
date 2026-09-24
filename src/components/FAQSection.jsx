@@ -129,7 +129,7 @@ export default function FAQSection() {
               Bize Ulaşın
             </Link>
             <Link
-              href="/indir"
+              href="/kayit"
               className="inline-block px-8 py-4 bg-white text-teal-600 font-semibold rounded-full border-2 border-teal-600 hover:bg-teal-50 transition-all"
             >
               Ücretsiz Deneyin

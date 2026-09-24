@@ -86,7 +86,7 @@ export default function BlogPost() {
                         <p className="text-teal-700 mb-4">
                             RaporinAI, güncel SUT kurallarını anlık olarak takip eder ve raporlarınızı yapay zeka ile analiz eder. Hatalı raporları Medula&apos;ya girmeden tespit ederek sizi olası kesintilerden korur.
                         </p>
-                        <Link href="/indir" className="inline-block bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors">
+                        <Link href="/kayit" className="inline-block bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors">
                             Ücretsiz Deneyin
                         </Link>
                     </div>

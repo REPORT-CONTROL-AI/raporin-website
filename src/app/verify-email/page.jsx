@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function VerifyEmailPage() {
   const [status, setStatus] = useState("checking"); // checking | success | error
@@ -30,13 +31,19 @@ export default function VerifyEmailPage() {
       {status === "success" && (
         <div>
           <h1 className="text-2xl font-bold text-teal-600 mb-3">✅ Hesabınız başarıyla aktifleştirildi!</h1>
-          <p className="text-gray-700 mb-5">Artık Raporin uygulamasına giriş yapabilirsiniz.</p>
+          <p className="text-gray-700 mb-5">Giriş yaparak masaüstü uygulamasını indirebilirsiniz.</p>
+          <Link href="/giris?next=/hesabim" className="inline-block rounded-full bg-gradient-to-r from-[#17C6A3] to-[#0F918B] px-8 py-3 font-semibold text-white hover:shadow-lg">
+            Giriş yap
+          </Link>
         </div>
       )}
       {status === "error" && (
         <div>
           <h1 className="text-2xl font-bold text-red-600 mb-3">❌ Doğrulama başarısız</h1>
-          <p className="text-gray-700 mb-5">Token geçersiz veya süresi dolmuş olabilir.</p>
+          <p className="text-gray-700 mb-5">Link geçersiz veya süresi dolmuş olabilir (30 dakika geçerlidir).</p>
+          <p className="text-sm text-gray-500">
+            Yeni link almak için <Link href="/giris" className="font-semibold text-teal-700 hover:underline">giriş sayfasında</Link> e-posta adresinizle giriş yapmayı deneyin.
+          </p>
         </div>
       )}
     </div>

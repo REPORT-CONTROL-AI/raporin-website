@@ -180,7 +180,7 @@ export default function TestimonialsSection() {
               Binlerce eczacının güvendiği RaporinAI ile SGK kesintilerinizi azaltın ve zamandan tasarruf edin.
             </p>
             <a
-              href="/indir"
+              href="/kayit"
               className="inline-block px-8 py-4 bg-gradient-to-r from-teal-600 to-emerald-600 text-white font-semibold rounded-full hover:shadow-xl transition-all hover:scale-105"
             >
               Ücretsiz Deneyin

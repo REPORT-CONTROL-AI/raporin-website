@@ -4,6 +4,9 @@ import Navbar from "./Navbar";
 import Image from "next/image";
 import Link from "next/link";
 
+// Form sayfalarında sabit maskot içeriğin üstüne biner.
+const HIDE_MASCOT_PATHS = ["/", "/kayit", "/giris", "/giris/masaustu", "/sifremi-unuttum", "/hesabim"];
+
 export default function LayoutWrapper() {
   const pathname = usePathname();
   const isEnglish = pathname.startsWith("/en");
@@ -15,10 +18,10 @@ export default function LayoutWrapper() {
       {/* ✅ Navbar tüm sayfalarda görünür */}
       <Navbar />
 
-      {/* Ana sayfanın ürün vitrini üzerinde sabit maskot gösterilmez. */}
-      {pathname !== "/" && (
+      {/* Ana sayfanın ürün vitrini ve form sayfaları üzerinde sabit maskot gösterilmez. */}
+      {!HIDE_MASCOT_PATHS.includes(pathname) && (
       <div className="fixed right-4 lg:right-8 top-24 z-40 hidden lg:block">
-        <Link href="/indir" className="block cursor-pointer hover:scale-105 transition-transform duration-300">
+        <Link href="/kayit" className="block cursor-pointer hover:scale-105 transition-transform duration-300">
           <div className="animate-float">
             <Image
               src="/raporin-mascot.png"

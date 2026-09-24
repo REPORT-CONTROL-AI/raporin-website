@@ -1,11 +1,18 @@
 "use client";
 
+import Link from "next/link";
 import { trackDownload } from "../../lib/analytics";
+import { useSessionFlag } from "../../lib/auth/useSessionFlag";
+import { DESKTOP_VERSION, DOWNLOAD_URL } from "../../lib/download";
 
-const VERSION = "1.1.23";
-const DOWNLOAD_URL = `https://downloads.raporin.com/RaporinAI-${VERSION}.msi`;
+const primaryButton =
+  "mt-9 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#17C6A3] to-[#0F918B] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl";
 
+// İndirme hesap oluşturduktan sonra yapılır. Sunucuda (ve arama motorlarında) giriş
+// yapılmamış hali render edilir; oturumu olan ziyaretçi doğrudan indirme butonunu görür.
 export default function DownloadPage() {
+  const loggedIn = useSessionFlag();
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#F8FBFF] via-white to-[#E8FFFB] px-4 py-24">
       <div className="mx-auto w-full max-w-xl rounded-3xl border border-[#D6F8F2] bg-white p-10 text-center shadow-lg sm:p-12">
@@ -22,22 +29,36 @@ export default function DownloadPage() {
           Eczaneler için yapay zeka destekli reçete ve rapor kontrol programı
         </p>
 
-        <p className="mt-5 leading-relaxed text-gray-600">
-          Masaüstü sürümünü indirerek reçete ve raporlarınızı güvenle analiz
-          edebilirsiniz.
-        </p>
-
-        <a
-          href={DOWNLOAD_URL}
-          onClick={() => trackDownload(DOWNLOAD_URL)}
-          className="mt-9 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#17C6A3] to-[#0F918B] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-        >
-          <span className="text-xl">💻</span>
-          Hemen İndir
-        </a>
+        {loggedIn ? (
+          <>
+            <p className="mt-5 leading-relaxed text-gray-600">
+              Masaüstü sürümünü indirin ve hesabınızla giriş yaparak reçete ve raporlarınızı analiz edin.
+            </p>
+            <a href={DOWNLOAD_URL} onClick={() => trackDownload(DOWNLOAD_URL)} className={primaryButton}>
+              <span className="text-xl">💻</span>
+              Hemen İndir
+            </a>
+          </>
+        ) : (
+          <>
+            <p className="mt-5 leading-relaxed text-gray-600">
+              Önce ücretsiz hesabınızı oluşturun; e-postanızı doğruladıktan sonra masaüstü
+              uygulamasını hesabım sayfanızdan indirebilirsiniz.
+            </p>
+            <Link href="/kayit" className={primaryButton}>
+              Ücretsiz hesap oluştur
+            </Link>
+            <p className="mt-4 text-sm text-gray-500">
+              Zaten hesabınız var mı?{" "}
+              <Link href="/giris?next=/hesabim" className="font-semibold text-teal-700 hover:underline">
+                Giriş yapın
+              </Link>
+            </p>
+          </>
+        )}
 
         <p className="mt-4 text-xs text-gray-400">
-          Windows 10 / 11 · Sürüm {VERSION} · Kredi kartı gerekmez
+          Windows 10 / 11 · Sürüm {DESKTOP_VERSION} · Kredi kartı gerekmez
         </p>
 
         <p className="mt-8 border-t border-gray-100 pt-6 text-sm text-gray-500">

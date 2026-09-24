@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
-import { ArrowRight, BadgeCheck, ChartNoAxesColumnIncreasing, CheckCircle2, Download, Link2, Maximize2, PlayCircle, Plus, ShieldCheck, Sparkles, Store, TriangleAlert, X, XCircle } from "lucide-react";
+import { ArrowRight, BadgeCheck, ChartNoAxesColumnIncreasing, CheckCircle2, Link2, Maximize2, PlayCircle, Plus, ShieldCheck, Sparkles, Store, TriangleAlert, X, XCircle } from "lucide-react";
 import styles from "./HeroSection.module.css";
 
 const screenshots = [
@@ -67,9 +67,8 @@ export default function HeroSection() {
             </ul>
 
             <div className={styles.actions}>
-              <Link href="/indir" className={styles.primary}>
-                <Download aria-hidden="true" size={20} />
-                Ücretsiz indir
+              <Link href="/kayit" className={styles.primary}>
+                Ücretsiz başla
                 <ArrowRight aria-hidden="true" size={19} />
               </Link>
               <a href="#nasil-calisir" className={styles.secondary}>

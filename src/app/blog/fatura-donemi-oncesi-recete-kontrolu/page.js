@@ -271,8 +271,8 @@ export default function BlogPost() {
                         <p className="text-teal-800 font-semibold mb-4 text-base">
                             RaporinAI&apos;ı indirin, Medula&apos;ya bağlanın ve fatura döneminizi kapatmadan önce reçetelerinizi kontrol edin.
                         </p>
-                        <Link href="/indir" className="inline-block bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors">
-                            Ücretsiz İndirin
+                        <Link href="/kayit" className="inline-block bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors">
+                            Ücretsiz Başlayın
                         </Link>
                     </div>
                 </div>

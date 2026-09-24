@@ -128,10 +128,10 @@ function ResetPasswordForm() {
             Yeni şifreniz başarıyla kaydedildi. Artık yeni şifrenizle giriş yapabilirsiniz.
           </p>
           <button
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/giris")}
             className="w-full px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-[#17C6A3] to-[#0F918B] hover:shadow-lg transition-all"
           >
-            Ana Sayfaya Dön
+            Giriş Yap
           </button>
         </div>
       </div>
@@ -290,7 +290,7 @@ function ResetPasswordForm() {
           <p className="text-sm text-gray-500">
             Şifre sıfırlama linkinin süresi dolmuş mu?{" "}
             <button
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/sifremi-unuttum")}
               className="text-[#0F918B] hover:underline font-medium"
             >
               Yeni link talep edin

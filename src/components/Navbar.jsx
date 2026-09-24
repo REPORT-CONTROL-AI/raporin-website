@@ -3,7 +3,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Download, Menu, Sparkles, X } from "lucide-react";
+import { ArrowRight, Menu, Sparkles, UserRound, X } from "lucide-react";
+import { useSessionFlag } from "../lib/auth/useSessionFlag";
 
 const links = [
   { href: "/", label: "Ana Sayfa" },
@@ -22,6 +23,14 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const isHome = pathname === "/";
+
+  const loggedIn = useSessionFlag();
+
+  const loginStyle = `min-h-12 items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold text-teal-700 transition-colors hover:bg-teal-50 ${focusStyle}`;
+  const primaryCta = loggedIn
+    ? { href: "/hesabim", label: "Hesabım", icon: UserRound }
+    : { href: "/kayit", label: "Ücretsiz başla", icon: ArrowRight };
+  const PrimaryIcon = primaryCta.icon;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 font-sans">
@@ -45,7 +54,10 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-        <Link href="/indir" className={`hidden xl:inline-flex ${downloadStyle}`}><Download aria-hidden="true" size={18} />Uygulamayı indir</Link>
+        <div className="hidden shrink-0 items-center gap-2 xl:flex">
+          {!loggedIn && <Link href="/giris" className={`inline-flex ${loginStyle}`}>Giriş yap</Link>}
+          <Link href={primaryCta.href} className={`inline-flex ${downloadStyle}`}>{primaryCta.label}<PrimaryIcon aria-hidden="true" size={18} /></Link>
+        </div>
         <button type="button" aria-label={menuOpen ? "Menüyü kapat" : "Menüyü aç"} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen(!menuOpen)} className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-slate-700 hover:bg-teal-50 xl:hidden ${focusStyle}`}>
           {menuOpen ? <X aria-hidden="true" size={26} /> : <Menu aria-hidden="true" size={26} />}
         </button>
@@ -53,7 +65,8 @@ export default function Navbar() {
       {menuOpen && (
         <div id="mobile-navigation" className="flex flex-col gap-1 overflow-y-auto border-t border-teal-100 bg-white px-6 py-4 shadow-xl shadow-teal-900/5 xl:hidden" style={{ maxHeight: `calc(100dvh - ${isHome ? 112 : 80}px)` }} onKeyDown={(event) => { if (event.key === "Escape") { setMenuOpen(false); document.querySelector('[aria-controls="mobile-navigation"]')?.focus(); } }}>
           {links.map(({ href, label }) => <Link key={href} href={href} onClick={() => setMenuOpen(false)} className={`rounded-lg px-3 py-3 text-sm font-medium text-slate-600 hover:bg-teal-50 hover:text-teal-700 ${focusStyle}`}>{label}</Link>)}
-          <Link href="/indir" onClick={() => setMenuOpen(false)} className={`mt-2 inline-flex ${downloadStyle}`}><Download aria-hidden="true" size={18} />Uygulamayı indir</Link>
+          <Link href={primaryCta.href} onClick={() => setMenuOpen(false)} className={`mt-2 inline-flex ${downloadStyle}`}>{primaryCta.label}<PrimaryIcon aria-hidden="true" size={18} /></Link>
+          {!loggedIn && <Link href="/giris" onClick={() => setMenuOpen(false)} className={`inline-flex ${loginStyle}`}>Giriş yap</Link>}
         </div>
       )}
     </nav>

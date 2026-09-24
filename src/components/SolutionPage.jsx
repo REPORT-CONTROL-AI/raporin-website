@@ -130,10 +130,10 @@ export default function SolutionPage({ page }) {
               tamamını tek tıkla analiz edin.
             </p>
             <Link
-              href="/indir"
+              href="/kayit"
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#17C6A3] to-[#0F918B] px-8 py-3.5 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
             >
-              Ücretsiz indirin
+              Ücretsiz başlayın
             </Link>
           </div>
 
